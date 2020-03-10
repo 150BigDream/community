@@ -1,19 +1,33 @@
 package com.example.community.Controller;
 
+import com.example.community.dto.PaginationDTO;
+import com.example.community.dto.QuestionDTO;
+import com.example.community.mapper.QuestionMapper;
 import com.example.community.mapper.UserMapper;
+import com.example.community.model.Question;
 import com.example.community.model.User;
+import com.example.community.service.QuestionService;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 public class indexController {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    QuestionMapper questionMapper;
+
+    @Autowired
+    QuestionService questionService;
     /**
      * //TODO 其实还蛮疑惑的，每次登陆的话，如果有GitHubuser，不管是不是同一个，都会重新生成一个随机token，
      * 这样子的话，重启或者什么，不还是会重新生成一个token吗？怎么识别在数据库有，是你呢？
@@ -24,7 +38,10 @@ public class indexController {
      * @return
      */
     @RequestMapping("/")
-    public String index(HttpServletRequest request) {
+    public String index(HttpServletRequest request,
+                        Model model,
+                        @RequestParam(name = "page",defaultValue = "1")Integer page,
+                        @RequestParam(name = "size",defaultValue = "5")Integer size) {
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies
@@ -39,6 +56,10 @@ public class indexController {
                 }
             }
         }
+
+        PaginationDTO pageInfo=questionService.selectAll(page,size);
+        model.addAttribute("pageInfo",pageInfo);
+
         return "index";
     }
 }

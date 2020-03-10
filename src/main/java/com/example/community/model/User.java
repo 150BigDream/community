@@ -15,4 +15,5 @@ public class User {
     private Long gmtModified;
     private String token;
     private String bio;
+    private String avatarUrl;
 }

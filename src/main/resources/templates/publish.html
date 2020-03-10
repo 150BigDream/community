@@ -6,6 +6,8 @@
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="css/community.css">
+    <link rel="stylesheet" href="../static/css/community.css">
 </head>
 <body>
 <!--导航条-->
@@ -44,12 +46,11 @@
 
     </div>
 </nav>
-<div class="container-fluid">
+<div class="container-fluid main">
     <div class="row">
-        <div class="col-8" >
-            <h2><span class="glyhicon glyohicon-plus" aria-hidden="true"></span>发起</h2>
+        <div class="col-9" >
+            <h2><svg class="bi bi-chevron-right" width="32" height="32" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z" clip-rule="evenodd"/><span aria-hidden="true"></span>发起</svg></h2>
             <hr>
-
             <form action="/publish" method="post">
                 <div class="form-group">
                     <label for="title">问题标题（简单扼要）：</label>
@@ -67,7 +68,7 @@
                 <button type="submit" class="btn btn-success btn-publish float-right">发布</button>
             </form>
         </div>
-        <div class="col-4"  >
+        <div class="col-3"  >
             <h3>问题发起指南</h3>
             ·问题标题：用精简语言描述问题，不超过25字
             ·问题补充：详细内容，并提供相关资料

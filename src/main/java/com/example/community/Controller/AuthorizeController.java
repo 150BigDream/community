@@ -3,7 +3,7 @@ package com.example.community.Controller;
 import com.example.community.mapper.UserMapper;
 import com.example.community.model.User;
 import com.example.community.provider.GithubProvider;
-import com.example.community.dto.AccessTokenDto;
+import com.example.community.dto.AccessTokenDTO;
 import com.example.community.dto.GithubUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -38,7 +38,7 @@ public class AuthorizeController {
                            @RequestParam(name = "state")String state,
                            HttpServletRequest request,
                            HttpServletResponse response){//这个注解参数接收，操作参数
-        AccessTokenDto accessTokenDto = new AccessTokenDto();
+        AccessTokenDTO accessTokenDto = new AccessTokenDTO();
 
         accessTokenDto.setCode(code);
         accessTokenDto.setState(state);
