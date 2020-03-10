@@ -11,41 +11,7 @@
 </head>
 <body>
 <!--导航条-->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">my社区</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-
-        <!--        //TODO 这里它没有居右-->
-        <ul class="navbar-nav mr-auto float-right">
-            <li class="nav-item" th:if="${session.user==null}">
-                <a class="nav-link"
-                   href="https://github.com/login/oauth/authorize?client_id=c05a2ccc4a4995c1b2e2&redirect_uri=http://localhost:8080/callback&scope=user&state=1">登陆</a>
-            </li>
-            <li class="nav-item dropdown row float-right" th:if="${session.user!=null}">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    我
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">消息中心</a>
-                    <a class="dropdown-item" href="#">个人资料</a>
-                    <!--            分割线        <div class="dropdown-divider"></div>-->
-                    <a class="dropdown-item" href="#">退出登录</a>
-                </div>
-            </li>
-        </ul>
-
-    </div>
-</nav>
+<div th:insert="~{navigation :: nav}"></div>
 <div class="container-fluid main">
     <div class="row">
         <div class="col-9" >

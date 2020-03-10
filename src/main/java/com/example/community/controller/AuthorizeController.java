@@ -1,4 +1,4 @@
-package com.example.community.Controller;
+package com.example.community.controller;
 
 import com.example.community.mapper.UserMapper;
 import com.example.community.model.User;
