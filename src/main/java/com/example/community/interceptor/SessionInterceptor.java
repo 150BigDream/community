@@ -16,13 +16,14 @@ public class SessionInterceptor implements HandlerInterceptor {
     UserMapper userMapper;
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        User user=null;
         Cookie[] cookies = request.getCookies();
         if (cookies != null && cookies.length!=0) {
             for (Cookie cookie : cookies
             ) {
                 if (cookie.getName().equals("token")) {
                     String token = cookie.getValue();
-                    User user = userMapper.findByToken(token);
+                    user = userMapper.findByToken(token);
                     if (user != null) {
                         request.getSession().setAttribute("user", user);
                     }
@@ -30,8 +31,15 @@ public class SessionInterceptor implements HandlerInterceptor {
                 }
             }
         }
+//        if(user == null){
+//            //未登陆，返回登陆页面
+//            request.setAttribute("msg","没有权限请先登陆");
+//            request.getRequestDispatcher("/").forward(request,response);
+//            return false;
+//        }else{
+            //已登陆，放行请求
+            return true;
 
-        return true;
     }
 
     @Override

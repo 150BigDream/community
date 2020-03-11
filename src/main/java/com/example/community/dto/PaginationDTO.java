@@ -1,10 +1,12 @@
 package com.example.community.dto;
-
 import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by codedrinker on 2019/5/14.
+ */
 @Data
 public class PaginationDTO<T> {
     private List<T> list;
@@ -16,25 +18,14 @@ public class PaginationDTO<T> {
     private List<Integer> pages = new ArrayList<>();
     private Integer totalPage;
 
-    public void setPagination(Integer totalCount,Integer size, Integer page) {
-        if (totalCount %size==0){
-            totalPage=totalCount/size;
-        }else {
-            totalPage=totalCount/size+1;
-        }
-
-        if (page < 1) {
-            page = 1;
-        }
-        if (page > totalPage) {
-            page = totalPage;
-        }
+    public void setPagination(Integer totalPage, Integer page) {//第一页,25数据/5=5页.第四页，40数据/5=7页
+        this.totalPage = totalPage;
         this.page = page;
 
-        pages.add(page);
+        pages.add(page);//1，2，3，4    1，2，3， 4， 5，6，7
         for (int i = 1; i <= 3; i++) {
             if (page - i > 0) {
-                pages.add(0, page - i);
+                pages.add(0, page - i);//在索引位置为0的地方插入数据page-1
             }
 
             if (page + i <= totalPage) {
