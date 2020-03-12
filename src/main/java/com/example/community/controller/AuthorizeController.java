@@ -43,7 +43,6 @@ public class AuthorizeController {
                            HttpServletRequest request,
                            HttpServletResponse response) {//这个注解参数接收，操作参数
         AccessTokenDTO accessTokenDto = new AccessTokenDTO();
-
         accessTokenDto.setCode(code);
         accessTokenDto.setState(state);
         accessTokenDto.setRedirect_uri(redirectUri);
@@ -61,13 +60,14 @@ public class AuthorizeController {
             user.setName(githubUser.getName());
             user.setAccountId(String.valueOf(githubUser.getId()));
             user.setBio(githubUser.getBio());
-            user.setAvatarUrl(githubUser.getAvatarUrl);
-//            userMapper.insert(user);
-            userService.createOrUpadat(user);
+            user.setAvatarUrl(githubUser.getAvatarUrl());
+            userService.createOrUpdate(user);
             response.addCookie(new Cookie("token", token));
+            System.out.println("登陆成功");
 
         } else {
             //登陆失败
+            System.out.println("登陆失败");
         }
         return "redirect:/";
     }

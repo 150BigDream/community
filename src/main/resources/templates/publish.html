@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>publish-community</title>
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
-    <link rel="stylesheet" type="text/css" href="css/community.css">
-    <link rel="stylesheet" href="../static/css/community.css">
+    <link rel="stylesheet" type="text/css" href="/css/community.css">
 </head>
 <body>
 <!--导航条-->
@@ -18,17 +17,32 @@
             <h2><svg class="bi bi-chevron-right" width="32" height="32" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z" clip-rule="evenodd"/><span aria-hidden="true"></span>提问 </svg></h2>
             <hr>
             <form action="/publish" method="post">
-                <div class="form-group">
+                <input type="hidden" th:if="${question}!=null" name="id" th:value="${question.getId()}">
+                <div class="form-group" th:if="${question}==null">
                     <label for="title">问题标题（简单扼要）：</label>
                     <input type="text" class="form-control" required id="title" name="title" placeholder="问题标题……">
                 </div>
-                <div class="form-group">
-                    <label for="description">问题补充（必填，参考右边提示）：</label>
-                    <textarea name="description" id="description" required class="form-control" cols="30" rows="10"></textarea>
+                <div class="form-group" th:if="${question}!=null">
+                    <label for="title2">问题标题（简单扼要）：</label>
+                    <input type="text" class="form-control" required id="title2" name="title" placeholder="问题标题……" th:value="${question.title}">
                 </div>
-                <div class="form-group">
+
+                <div class="form-group" th:if="${question}==null">
+                    <label for="description">问题补充（必填，参考右边提示）：</label>
+                    <textarea name="description" id="description" required class="form-control" cols="30" rows="10" ></textarea>
+                </div>
+                <div class="form-group" th:if="${question}!=null">
+                    <label for="description2">问题补充（必填，参考右边提示）：</label>
+                    <textarea name="description" id="description2" required class="form-control" cols="30" rows="10" th:text="${question.description}"></textarea>
+                </div>
+
+                <div class="form-group" th:if="${question}==null">
                     <label for="tag">添加标签：</label>
-                    <input type="text" class="form-control" id="tag" name="tag" required placeholder="输入标签,以,号分割……">
+                    <input type="text" class="form-control" id="tag" name="tag" required placeholder="输入标签,以,号分割……" >
+                </div>
+                <div class="form-group" th:if="${question}!=null">
+                    <label for="tag2">添加标签：</label>
+                    <input type="text" class="form-control" id="tag2" name="tag" required placeholder="输入标签,以,号分割……" th:value="${question.tag}">
                 </div>
                 <div class="alert alert-danger" th:if="${error}!=null" th:text="${error}"></div>
                 <button type="submit" class="btn btn-success btn-publish float-right">发布</button>

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
     @Autowired
     UserMapper userMapper;
-    public void createOrUpadat(User user) {
+    public void createOrUpdate(User user) {
         User dbUser=userMapper.selectByAccountId(user.getAccountId());
         if (dbUser==null){
             //数据库没有该用户，插入
@@ -20,12 +20,12 @@ public class UserService {
         }else{
             //更新
             user.setGmtModified(System.currentTimeMillis());
-//            dbUser.setGmtModified(user.getGmtModified());
-//            dbUser.setName(user.getName());
-//            dbUser.setToken(user.getToken());
-//            dbUser.setAvatarUrl(user.getAvatarUrl());
-//            dbUser.setBio(user.getBio());
-            BeanUtils.copyProperties(user,dbUser);
+            dbUser.setGmtModified(user.getGmtModified());
+            dbUser.setName(user.getName());
+            dbUser.setToken(user.getToken());
+            dbUser.setAvatarUrl(user.getAvatarUrl());
+            dbUser.setBio(user.getBio());
+//          BeanUtils.copyProperties(user,dbUser);//dbUser属性值不为空的时候似乎是不能用的，会报错
             userMapper.updateById(dbUser);
         }
     }

@@ -107,4 +107,23 @@ public class QuestionService {
         questionDTO.setUser(user);
         return questionDTO;
     }
+
+
+    public void creatOrUpdate(Question question) {
+        Question dbQuestion = questionMapper.selectById(question.getId());
+        if (dbQuestion==null){
+            //数据库没有，插入
+            question.setGmtCreate(System.currentTimeMillis());
+            question.setGmtModified(question.getGmtCreate());
+            questionMapper.insert(question);
+        }else{
+            //更新
+            dbQuestion.setCreator(question.getCreator());
+            dbQuestion.setTag(question.getTag());
+            dbQuestion.setTitle(question.getTitle());
+            dbQuestion.setDescription(question.getDescription());
+            dbQuestion.setGmtModified(System.currentTimeMillis());
+            questionMapper.updateById(dbQuestion);
+        }
+    }
 }
