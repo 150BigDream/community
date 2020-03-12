@@ -5,6 +5,7 @@ import com.example.community.model.User;
 import com.example.community.provider.GithubProvider;
 import com.example.community.dto.AccessTokenDTO;
 import com.example.community.dto.GithubUser;
+import com.example.community.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,10 @@ public class AuthorizeController {
     private GithubProvider githubProvider;
 
     @Autowired
-    UserMapper userMapper;
+    private UserMapper userMapper;
+
+    @Autowired
+    private UserService userService;
     //这个spring注解会去在配置文件里找github.client.id这个key的value，赋值到clientId
     @Value("${github.client.id}")
     private String clientId;
@@ -34,10 +38,10 @@ public class AuthorizeController {
     private String redirectUri;
 
     @GetMapping("/callback")
-    public String callback(@RequestParam(name = "code")String code,
-                           @RequestParam(name = "state")String state,
+    public String callback(@RequestParam(name = "code") String code,
+                           @RequestParam(name = "state") String state,
                            HttpServletRequest request,
-                           HttpServletResponse response){//这个注解参数接收，操作参数
+                           HttpServletResponse response) {//这个注解参数接收，操作参数
         AccessTokenDTO accessTokenDto = new AccessTokenDTO();
 
         accessTokenDto.setCode(code);
@@ -49,22 +53,34 @@ public class AuthorizeController {
         String accessToken = githubProvider.getAccessToken(accessTokenDto);
         GithubUser githubUser = githubProvider.getUser(accessToken);
 
-        if (githubUser!=null &&githubUser.getId()!=null){
+        if (githubUser != null && githubUser.getId() != null) {
             //登陆成功
             User user = new User();
-            String token=UUID.randomUUID().toString();
+            String token = UUID.randomUUID().toString();
             user.setToken(token);
             user.setName(githubUser.getName());
             user.setAccountId(String.valueOf(githubUser.getId()));
-            user.setGmtCreate(System.currentTimeMillis());
-            user.setGmtModified(user.getGmtCreate());
-            userMapper.insert(user);
-            response.addCookie(new Cookie("token",token));
+            user.setBio(githubUser.getBio());
+            user.setAvatarUrl(githubUser.getAvatarUrl);
+//            userMapper.insert(user);
+            userService.createOrUpadat(user);
+            response.addCookie(new Cookie("token", token));
 
-        }
-        else {
+        } else {
             //登陆失败
         }
+        return "redirect:/";
+    }
+
+    @GetMapping("/logout")
+    public String logout(
+            HttpServletRequest request,
+            HttpServletResponse response
+    ){
+        request.getSession().removeAttribute("user");
+        Cookie cookie=new Cookie("token",null);
+        cookie.setMaxAge(0);
+        response.addCookie(cookie);
         return "redirect:/";
     }
 }

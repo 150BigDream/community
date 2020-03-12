@@ -5,6 +5,7 @@ import com.example.community.model.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,4 +20,10 @@ public interface UserMapper extends BaseMapper<User> {
 
     @Select("select * from user")
     List<User> selectAll();
+
+    @Select("select * from user where account_id=#{accountId}")
+    User selectByAccountId(@Param("accountId") String accountId);
+
+//    @Update("update user set name=#{name},token=#{token},gmt_create=#{gmtCreate},gmt_modified=#{gmtModified}")
+//    void update(User User);
 }
