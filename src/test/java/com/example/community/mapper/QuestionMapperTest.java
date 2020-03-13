@@ -14,15 +14,12 @@ public class QuestionMapperTest {
 
     @Autowired
     QuestionMapper questionMapper;
+
     @Test
-    public void insert(){
+    public void test(){
         Question question=new Question();
-        question.setTitle("title");
-        question.setDescription("description");
-        question.setTag("tag");
-        question.setCreator(2);
-        question.setGmtCreate(System.currentTimeMillis());
-        question.setGmtModified(question.getGmtCreate());
+        question.setCreator(14L);
         questionMapper.insert(question);
     }
+
 }

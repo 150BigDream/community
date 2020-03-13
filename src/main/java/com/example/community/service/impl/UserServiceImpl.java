@@ -3,7 +3,7 @@ package com.example.community.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.community.model.User;
 import com.example.community.mapper.UserMapper;
-import com.example.community.service.IUserService;
+import com.example.community.service.UserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
  * @since 2020-03-13
  */
 @Service
-public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
     @Autowired
     UserMapper userMapper;
@@ -29,7 +29,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         QueryWrapper<User> queryWrapper=new QueryWrapper<>();
         queryWrapper.eq("account_id",user.getAccountId());
         User dbUser=userMapper.selectOne(queryWrapper);
-//      User dbUser=userMapper.selectByAccountId(user.getAccountId());
         if (dbUser==null){
             //数据库没有该用户，插入
             user.setGmtCreate(System.currentTimeMillis());
@@ -43,7 +42,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             dbUser.setToken(user.getToken());
             dbUser.setAvatarUrl(user.getAvatarUrl());
             dbUser.setBio(user.getBio());
-//          BeanUtils.copyProperties(user,dbUser);//dbUser属性值不为空的时候似乎是不能用的，会报错
+//          BeanUtils.copyProperties(user,dbUser);//一个类注入另一个类，同一个类是不ok的
             userMapper.updateById(dbUser);
         }
     }

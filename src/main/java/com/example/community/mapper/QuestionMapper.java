@@ -15,5 +15,5 @@ public interface QuestionMapper extends BaseMapper<Question> {
     List<Question> selectList(@Param("offset") Integer offset, @Param("size") Integer size);
 
     @Select("select * from question where creator=#{userId} limit #{offset},#{size}")
-    List<Question> selectListByUserId(@Param("userId") Integer userId, @Param("offset") Integer offset, @Param("size") Integer size);
+    List<Question> selectListByUserId(@Param("userId") Long userId, @Param("offset") Integer offset, @Param("size") Integer size);
 }

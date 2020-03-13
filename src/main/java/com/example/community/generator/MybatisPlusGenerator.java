@@ -101,7 +101,8 @@ public class MybatisPlusGenerator {
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         strategy.setEntityLombokModel(true);
-        strategy.setRestControllerStyle(true);
+//        strategy.setRestControllerStyle(true);//restController
+        strategy.setRestControllerStyle(false);
 
         // 写于父类中的公共字段
         strategy.setSuperEntityColumns("id");

@@ -1,8 +1,6 @@
 package com.example.community.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.community.dto.QuestionDTO;
-import com.example.community.model.Question;
 import com.example.community.service.impl.QuestionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +20,7 @@ public class QuestionController {
      * @return
      */
     @GetMapping("/question/{id}")
-    public String question(@PathVariable("id")Integer id, Model model){
+    public String question(@PathVariable("id")Long id, Model model){
         QuestionDTO  questionDTO= questionService.selectById(id);
         model.addAttribute("question",questionDTO);
         return "question";

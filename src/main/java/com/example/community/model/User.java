@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class User {
     @TableId(type= IdType.AUTO)
-    private Integer id;
+    private Long id;
     private String accountId;
     private String name;
     private Long gmtCreate;

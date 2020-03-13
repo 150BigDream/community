@@ -8,7 +8,7 @@ import com.example.community.mapper.UserMapper;
 import com.example.community.model.Question;
 import com.example.community.mapper.QuestionMapper;
 import com.example.community.model.User;
-import com.example.community.service.IQuestionService;
+import com.example.community.service.QuestionService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ import java.util.List;
  * @since 2020-03-13
  */
 @Service
-public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> implements IQuestionService {
+public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> implements QuestionService {
     @Autowired
     QuestionMapper questionMapper;
     @Autowired
@@ -69,7 +69,7 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
         return paginationDTO;
     }
 
-    public PaginationDTO selectList(Integer userId, Integer page, Integer size) {
+    public PaginationDTO selectList(Long userId, Integer page, Integer size) {
         Integer totalPage;
         PaginationDTO paginationDTO = new PaginationDTO();
         QueryWrapper<Question> questionQueryWrapper=new QueryWrapper<>();
@@ -107,7 +107,7 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
         return paginationDTO;
     }
 
-    public QuestionDTO selectById(Integer id) {
+    public QuestionDTO selectById(Long id) {
         Question question = questionMapper.selectById(id);
         //累加阅读数
         UpdateWrapper<Question> updateWrapper=new UpdateWrapper<>();
@@ -122,7 +122,6 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
         return questionDTO;
     }
 
-//TODO 这里改成saveOrupdate?
     public void creatOrUpdate(Question question) {
         Question dbQuestion = questionMapper.selectById(question.getId());
         if (dbQuestion==null){

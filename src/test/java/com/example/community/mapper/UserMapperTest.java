@@ -46,4 +46,5 @@ public class UserMapperTest {
         User user = userMapper.selectOne(queryWrapper);
         System.out.println(user.getName());
     }
+
 }
