@@ -1,6 +1,7 @@
 package com.example.community.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.example.community.dto.PaginationDTO;
 import com.example.community.dto.QuestionDTO;
 import com.example.community.mapper.UserMapper;
@@ -108,6 +109,12 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
 
     public QuestionDTO selectById(Integer id) {
         Question question = questionMapper.selectById(id);
+        //累加阅读数
+        UpdateWrapper<Question> updateWrapper=new UpdateWrapper<>();
+        updateWrapper.set("view_count",question.getViewCount()+1);
+        //像浏览数这种东西，要考虑并发，从数据库层面操作
+        questionService.update(updateWrapper);
+
         User user = userMapper.selectById(question.getCreator());
         QuestionDTO questionDTO=new QuestionDTO();
         BeanUtils.copyProperties(question,questionDTO);
@@ -115,7 +122,7 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
         return questionDTO;
     }
 
-
+//TODO 这里改成saveOrupdate?
     public void creatOrUpdate(Question question) {
         Question dbQuestion = questionMapper.selectById(question.getId());
         if (dbQuestion==null){

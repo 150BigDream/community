@@ -23,6 +23,12 @@ public class PublishController {
     @Autowired
     QuestionServiceImpl questionService;
 
+    /**
+     * 编辑功能
+     * @param id
+     * @param model
+     * @return
+     */
     @GetMapping("/publish/{id}")
     public String edit(@PathVariable(name = "id")Integer id, Model model){
         Question question = questionMapper.selectById(id);
@@ -56,7 +62,7 @@ public class PublishController {
         question.setId(id);
         question.setCreator(user.getId());
         questionService.creatOrUpdate(question);
-//        questionMapper.insert(question);
+
         return "redirect:/";
     }
 }
