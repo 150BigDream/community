@@ -46,7 +46,6 @@ public class GithubProvider {
             String string= response.body().string();
             //将json类型的string转化为一个类对象
             GithubUser githubUser = JSON.parseObject(string, GithubUser.class);
-            System.out.println(githubUser.getId());
             return githubUser;
         } catch (IOException e) {
             e.printStackTrace();

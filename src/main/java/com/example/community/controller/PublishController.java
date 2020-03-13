@@ -3,7 +3,7 @@ package com.example.community.controller;
 import com.example.community.mapper.QuestionMapper;
 import com.example.community.model.Question;
 import com.example.community.model.User;
-import com.example.community.service.QuestionService;
+import com.example.community.service.impl.QuestionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +21,7 @@ public class PublishController {
     QuestionMapper questionMapper;
 
     @Autowired
-    QuestionService questionService;
+    QuestionServiceImpl questionService;
 
     @GetMapping("/publish/{id}")
     public String edit(@PathVariable(name = "id")Integer id, Model model){
@@ -40,7 +40,7 @@ public class PublishController {
             @RequestParam("title")String title,
             @RequestParam("description")String description,
             @RequestParam("tag")String tag,
-            @RequestParam("id")Integer id,
+            @RequestParam(value = "id",required = false)Integer id,
             HttpServletRequest request,
             Model model
     ){

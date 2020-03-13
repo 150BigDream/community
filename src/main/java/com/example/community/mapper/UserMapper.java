@@ -12,17 +12,17 @@ import java.util.List;
 
 @Repository
 public interface UserMapper extends BaseMapper<User> {
-    @Select("select * from user where token=#{token}")
-    User findByToken(@Param("token") String token);//不是类的话需要加这个注解
+//    @Select("select * from user where token=#{token}")
+//    User findByToken(@Param("token") String token);//不是类的话需要加这个注解
 
 //    @Insert("insert into user values(accountId=#{accountId},name=#{name},gmtModified=#{gmtModified},gmtCreate=#{gmtCreate}，bio=#{bio},token=#{token})")
 //    int insert(User user);
 
-    @Select("select * from user")
-    List<User> selectAll();
+//    @Select("select * from user")
+//    List<User> selectAll();
 
-    @Select("select * from user where account_id=#{accountId}")
-    User selectByAccountId(@Param("accountId") String accountId);
+//    @Select("select * from user where account_id=#{accountId}")
+//    User selectByAccountId(@Param("accountId") String accountId);
 
 //    @Update("update user set name=#{name},token=#{token},gmt_create=#{gmtCreate},gmt_modified=#{gmtModified}")
 //    void update(User User);

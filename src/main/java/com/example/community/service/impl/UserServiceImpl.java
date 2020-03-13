@@ -1,17 +1,35 @@
-package com.example.community.service;
+package com.example.community.service.impl;
 
-import com.example.community.mapper.UserMapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.community.model.User;
-import org.springframework.beans.BeanUtils;
+import com.example.community.mapper.UserMapper;
+import com.example.community.service.IUserService;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * <p>
+ *  服务实现类
+ * </p>
+ *
+ * @author zz
+ * @since 2020-03-13
+ */
 @Service
-public class UserService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
+
     @Autowired
     UserMapper userMapper;
+
+    @Autowired
+    UserServiceImpl userService;
+
     public void createOrUpdate(User user) {
-        User dbUser=userMapper.selectByAccountId(user.getAccountId());
+        QueryWrapper<User> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("account_id",user.getAccountId());
+        User dbUser=userMapper.selectOne(queryWrapper);
+//      User dbUser=userMapper.selectByAccountId(user.getAccountId());
         if (dbUser==null){
             //数据库没有该用户，插入
             user.setGmtCreate(System.currentTimeMillis());

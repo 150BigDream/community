@@ -12,17 +12,17 @@ import java.util.List;
 @Repository
 public interface QuestionMapper extends BaseMapper<Question> {
 
-    @Select("select * from question")
-    List<Question> selectAll();
+//    @Select("select * from question")
+//    List<Question> selectAll();
 
-    @Select("select count(1) from question")
-    Integer count();
+//    @Select("select count(1) from question")
+//    Integer count();
 
     @Select("select * from question limit #{offset},#{size}")
     List<Question> selectList(@Param("offset") Integer offset, @Param("size") Integer size);
 
-    @Select("select count(1) from question where creator=#{userId}")
-    Integer countById(@Param("userId")Integer userIdd);
+//    @Select("select count(1) from question where creator=#{userId}")
+//    Integer countById(@Param("userId")Integer userId);
 
     @Select("select * from question where creator=#{userId} limit #{offset},#{size}")
     List<Question> selectListByUserId(@Param("userId") Integer userId, @Param("offset") Integer offset, @Param("size") Integer size);

@@ -1,11 +1,10 @@
 package com.example.community.controller;
 
-import com.example.community.mapper.UserMapper;
 import com.example.community.model.User;
 import com.example.community.provider.GithubProvider;
 import com.example.community.dto.AccessTokenDTO;
 import com.example.community.dto.GithubUser;
-import com.example.community.service.UserService;
+import com.example.community.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -23,10 +22,7 @@ public class AuthorizeController {
     private GithubProvider githubProvider;
 
     @Autowired
-    private UserMapper userMapper;
-
-    @Autowired
-    private UserService userService;
+    UserServiceImpl userService;
     //这个spring注解会去在配置文件里找github.client.id这个key的value，赋值到clientId
     @Value("${github.client.id}")
     private String clientId;

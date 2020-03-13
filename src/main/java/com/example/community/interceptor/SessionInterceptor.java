@@ -1,5 +1,6 @@
 package com.example.community.interceptor;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.community.mapper.UserMapper;
 import com.example.community.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,9 @@ public class SessionInterceptor implements HandlerInterceptor {
             ) {
                 if (cookie.getName().equals("token")) {
                     String token = cookie.getValue();
-                    user = userMapper.findByToken(token);
+                    QueryWrapper<User> queryWrapper=new QueryWrapper();
+                    queryWrapper.eq("token",token);
+                    user=userMapper.selectOne(queryWrapper);
                     if (user != null) {
                         request.getSession().setAttribute("user", user);
                     }

@@ -17,12 +17,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class QuestionServiceTest {
     @Autowired
-    QuestionService questionService;
+    IQuestionService questionService;
 
     @Autowired
     QuestionMapper questionMapper;
@@ -33,7 +32,7 @@ public class QuestionServiceTest {
     public void selectById(){
         User user = userMapper.selectById(6);
         System.out.println(user);
-    }
+    }}
 
 //    @Test
 //    public void selectAll() {
@@ -43,28 +42,3 @@ public class QuestionServiceTest {
 //        }
 //    }
 
-    @Test
-    public void pageInfo(){
-
-        List<Question> questions=questionMapper.selectAll();
-        List<QuestionDTO> questionDTOList=new ArrayList<>();
-
-        for (Question question : questions) {
-            User user = userMapper.selectById(question.getCreator());
-            QuestionDTO questionDTO = new QuestionDTO();
-            BeanUtils.copyProperties(question,questionDTO);
-            questionDTO.setUser(user);
-            questionDTOList.add(questionDTO);
-        }
-        PageHelper.startPage(1, 5);
-        PageInfo pageInfo = new PageInfo(questionDTOList);
-//        for (Object p:pageInfo.getList()
-//             ) {
-//            System.out.println(p.toString());
-//        }
-    //    System.out.println( pageInfo.getPages());
-        for (int navigatepageNum : pageInfo.getNavigatepageNums()) {
-            System.out.println(navigatepageNum);
-        }
-    }
-}
