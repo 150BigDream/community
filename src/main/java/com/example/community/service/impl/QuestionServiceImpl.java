@@ -2,6 +2,8 @@ package com.example.community.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.example.community.Exception.CustomizeErrorCode;
+import com.example.community.Exception.CustomizeException;
 import com.example.community.dto.PaginationDTO;
 import com.example.community.dto.QuestionDTO;
 import com.example.community.mapper.UserMapper;
@@ -109,7 +111,9 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
 
     public QuestionDTO selectById(Long id) {
         Question question = questionMapper.selectById(id);
-
+        if (question==null){
+            throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
+        }
         //累加阅读数
         UpdateWrapper<Question> updateWrapper=new UpdateWrapper<>();
         updateWrapper.set("view_count",question.getViewCount()+1).setEntity(question);

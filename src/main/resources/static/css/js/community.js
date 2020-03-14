@@ -4,14 +4,14 @@ function post() {
     $.ajax({
         type: "POST",
         url: "/comment",
-        dataType: "application/json",
+        dataType: "json",
         contentType: "application/json",
         data: JSON.stringify({
             "parentId": questionId,
             "content": commentContent,
             "type": 1
         }),
-        success(response) {
+        success:function(response){
             if (response.code == 200) {
                 $("#comment_section").hide();
             } else {
