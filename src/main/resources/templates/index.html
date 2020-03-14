@@ -10,6 +10,16 @@
     <link rel="stylesheet" type="text/css" href="/css/community.css">
 
 </head>
+<script type="application/javascript">
+<!--    可以加上debugger; 调bugger-->
+    window.onload=function () {
+        var closable=window.localStorage.getItem("closable");
+        if (closable=="true"){
+            window.close();
+            window.localStorage.removeItem("closable");
+        }
+    }
+</script>
 <body>
 
 <div th:insert="~{navigation :: nav}"></div>

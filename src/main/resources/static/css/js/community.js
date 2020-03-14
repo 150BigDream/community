@@ -4,18 +4,26 @@ function post() {
     $.ajax({
         type: "POST",
         url: "/comment",
-        dataType:"application/json",
-        contentType:"application/json",
-        data:JSON.stringify( {
+        dataType: "application/json",
+        contentType: "application/json",
+        data: JSON.stringify({
             "parentId": questionId,
             "content": commentContent,
             "type": 1
         }),
         success(response) {
-            if (response.code==200){
+            if (response.code == 200) {
                 $("#comment_section").hide();
-            }else{
-                alert(response.message);
+            } else {
+                if (response.code = 2003) {
+                    let isAccepted = confirm(response.message);
+                    if (isAccepted) {
+                        window.open("https://github.com/login/oauth/authorize?client_id=c05a2ccc4a4995c1b2e2&redirect_uri=http://localhost:8080/callback&scope=user&state=1");
+                        window.localStorage.setItem("closable", true);
+                    }
+                } else {
+                    alert(response.message);
+                }
             }
             console.log(response);
         }
