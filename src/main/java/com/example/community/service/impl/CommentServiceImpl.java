@@ -13,6 +13,7 @@ import com.example.community.service.CommentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>
@@ -30,6 +31,8 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
     QuestionMapper questionMapper;
     @Autowired
     QuestionServiceImpl questionService;
+
+    @Transactional
     public void insert(Comment comment) {
         //问题对不上
         if (comment.getParentId()==null||comment.getParentId()==0){
@@ -52,10 +55,14 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
             if (dbQuestion==null){
                 throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
             }
+
+            //两个sql语句，因为抖动之类的原因有语句可能回执行失败
+            // 可以用事务commit，但是在实际开发中，insert是主逻辑，要保证插入，而更新应该用其他的手段去恢复
             commentMapper.insert(comment);
             //增加回复数
             UpdateWrapper<Question> updateWrapper=new UpdateWrapper<>();
-            updateWrapper.set("comment_count",dbQuestion.getCommentCount()+1);
+            updateWrapper.set("comment_count",dbQuestion.getCommentCount()+1)
+            .setEntity(dbQuestion);
             questionService.update(updateWrapper);
         }
     }

@@ -35,12 +35,12 @@ public class CommentController {
 
     @Autowired
     CommentServiceImpl commentService;
+
     @ResponseBody
     @PostMapping("/comment")
     public Object post(@RequestBody CommentDTO commentDTO,
                        HttpServletRequest request){
-//        User user = (User) request.getAttribute("user");
-        User user=userMapper.selectById(14);
+        User user = (User) request.getSession().getAttribute("user");
         if (user==null){
             return ResultDTO.errorOf(CustomizeErrorCode.NO_LOGIN);
         }
@@ -51,7 +51,6 @@ public class CommentController {
         comment.setGmtModified(System.currentTimeMillis());
         comment.setGmtCreate(System.currentTimeMillis());
         comment.setCommentator(user.getId());
-        comment.setLikeCount(0L);
         commentService.insert(comment);
         return ResultDTO.okOf();
     }

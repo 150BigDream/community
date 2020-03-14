@@ -19,9 +19,11 @@ public class QuestionController {
      * @param model
      * @return
      */
+
     @GetMapping("/question/{id}")
     public String question(@PathVariable("id")Long id, Model model){
         QuestionDTO  questionDTO= questionService.selectById(id);
+
         model.addAttribute("question",questionDTO);
         return "question";
     }

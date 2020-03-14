@@ -109,9 +109,10 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
 
     public QuestionDTO selectById(Long id) {
         Question question = questionMapper.selectById(id);
+
         //累加阅读数
         UpdateWrapper<Question> updateWrapper=new UpdateWrapper<>();
-        updateWrapper.set("view_count",question.getViewCount()+1);
+        updateWrapper.set("view_count",question.getViewCount()+1).setEntity(question);
         //像浏览数这种东西，要考虑并发，从数据库层面操作
         questionService.update(updateWrapper);
 

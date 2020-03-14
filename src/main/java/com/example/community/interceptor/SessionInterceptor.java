@@ -11,22 +11,24 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 @Service
 public class SessionInterceptor implements HandlerInterceptor {
     @Autowired
     UserMapper userMapper;
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        User user=null;
+        User user = null;
         Cookie[] cookies = request.getCookies();
-        if (cookies != null && cookies.length!=0) {
+        if (cookies != null && cookies.length != 0) {
             for (Cookie cookie : cookies
             ) {
                 if (cookie.getName().equals("token")) {
                     String token = cookie.getValue();
-                    QueryWrapper<User> queryWrapper=new QueryWrapper();
-                    queryWrapper.eq("token",token);
-                    user=userMapper.selectOne(queryWrapper);
+                    QueryWrapper<User> queryWrapper = new QueryWrapper();
+                    queryWrapper.eq("token", token);
+                    user = userMapper.selectOne(queryWrapper);
                     if (user != null) {
                         request.getSession().setAttribute("user", user);
                     }
@@ -34,14 +36,7 @@ public class SessionInterceptor implements HandlerInterceptor {
                 }
             }
         }
-//        if(user == null){
-//            //未登陆，返回登陆页面
-//            request.setAttribute("msg","没有权限请先登陆");
-//            request.getRequestDispatcher("/").forward(request,response);
-//            return false;
-//        }else{
-            //已登陆，放行请求
-            return true;
+        return true;
 
     }
 
