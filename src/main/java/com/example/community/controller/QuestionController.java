@@ -2,6 +2,7 @@ package com.example.community.controller;
 
 import com.example.community.dto.CommentDTO;
 import com.example.community.dto.QuestionDTO;
+import com.example.community.enums.CommentTypeEnum;
 import com.example.community.service.impl.CommentServiceImpl;
 import com.example.community.service.impl.QuestionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class QuestionController {
     @GetMapping("/question/{id}")
     public String question(@PathVariable("id")Long id, Model model){
         QuestionDTO  questionDTO= questionService.selectById(id);
-        List<CommentDTO> commentDTOS=commentService.listByQuestionId(id);
+        List<CommentDTO> commentDTOS=commentService.listByTargetId(id, CommentTypeEnum.QUESTION);
         model.addAttribute("question",questionDTO);
         model.addAttribute("comments",commentDTOS);
         return "question";

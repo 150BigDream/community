@@ -79,9 +79,17 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
         }
     }
 
-    public List<CommentDTO> listByQuestionId(Long id) {
+    /**
+     * 列出所有的评论。对问题的评论，对评论的评论
+     * @param id 问题主键/评论主键
+     * @param typeEnum 是问题类型还是评论类型
+     * @return
+     */
+    public List<CommentDTO> listByTargetId(Long id, CommentTypeEnum typeEnum) {
         QueryWrapper<Comment> questionQueryWrapper=new QueryWrapper<>();
-        questionQueryWrapper.eq("parent_id",id).eq("type",CommentTypeEnum.QUESTION.getType());
+        questionQueryWrapper.eq("parent_id",id)
+                .eq("type", typeEnum.getType())
+                .orderByDesc("gmt_create");
         List<Comment> comments = commentMapper.selectList(questionQueryWrapper);
         //没有评论,直接给一个空的arrayList
         if (comments.size()==0){

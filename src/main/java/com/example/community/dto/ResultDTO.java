@@ -4,10 +4,13 @@ import com.example.community.Exception.CustomizeErrorCode;
 import com.example.community.Exception.CustomizeException;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
-public class ResultDTO {
+public class ResultDTO<T> {
     private Integer code;
     private String message;
+    private T data;
 
     /**
      * 静态方法，获取到异常结果
@@ -40,5 +43,19 @@ public class ResultDTO {
 
     public static ResultDTO errorOf(CustomizeException e) {
         return errorOf(e.getCode(), e.getMessage());
+    }
+
+    /**
+     * 穿过来一个T类型的参数，加入结果集
+     * @param t
+     * @param <T> List/object之类
+     * @return
+     */
+    public static <T> ResultDTO okOf(T t) {
+        ResultDTO resultDTO = new ResultDTO();
+        resultDTO.setCode(200);
+        resultDTO.setMessage("请求成功");
+        resultDTO.setData(t);
+        return resultDTO;
     }
 }

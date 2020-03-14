@@ -3,7 +3,9 @@ package com.example.community.controller;
 
 import com.example.community.Exception.CustomizeErrorCode;
 import com.example.community.dto.CommentCreateDTO;
+import com.example.community.dto.CommentDTO;
 import com.example.community.dto.ResultDTO;
+import com.example.community.enums.CommentTypeEnum;
 import com.example.community.mapper.CommentMapper;
 import com.example.community.mapper.UserMapper;
 import com.example.community.model.Comment;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * <p>
@@ -34,6 +37,12 @@ public class CommentController {
     @Autowired
     CommentServiceImpl commentService;
 
+    /**
+     * 评论功能
+     * @param commentCreateDTO
+     * @param request
+     * @return
+     */
     @ResponseBody
     @PostMapping("/comment")
     public Object post(@RequestBody CommentCreateDTO commentCreateDTO,
@@ -41,6 +50,9 @@ public class CommentController {
         User user = (User) request.getSession().getAttribute("user");
         if (user==null){
             return ResultDTO.errorOf(CustomizeErrorCode.NO_LOGIN);
+        }
+        if (commentCreateDTO==null||commentCreateDTO.getContent()==null){
+            return ResultDTO.errorOf(CustomizeErrorCode.CONTENT_IS_EMPTY);
         }
         Comment comment = new Comment();
         comment.setParentId(commentCreateDTO.getParentId());
@@ -52,4 +64,17 @@ public class CommentController {
         commentService.insert(comment);
         return ResultDTO.okOf();
     }
+
+    /**
+     * 对评论的评论
+     * @param id
+     * @return
+     */
+    @ResponseBody
+    @GetMapping("/comment/{id}")
+    public ResultDTO<List> comments(@PathVariable(name = "id")Long id){
+        List<CommentDTO> commentDTOS = commentService.listByTargetId(id, CommentTypeEnum.COMMENT);
+        return ResultDTO.okOf(commentDTOS);
+    }
+
 }
