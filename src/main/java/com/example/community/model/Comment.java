@@ -22,14 +22,14 @@ import lombok.experimental.Accessors;
 public class Comment implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @TableId(type = IdType.AUTO)
     private Long id;
 
     private Long parentId;
 
     /**
-     * 1级还是2级
+     * 评论的是问题还是评论
      */
     private Integer type;
 
@@ -43,6 +43,8 @@ public class Comment implements Serializable {
     private Long gmtModified;
 
     private Long likeCount;
+
+    private Long commentCount;
 
     private String content;
 

@@ -38,6 +38,8 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
     @Autowired
     CommentMapper commentMapper;
     @Autowired
+    CommentServiceImpl commentService;
+    @Autowired
     QuestionMapper questionMapper;
     @Autowired
     QuestionServiceImpl questionService;
@@ -56,10 +58,15 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
         }
         if (comment.getType()==CommentTypeEnum.COMMENT.getType()){
             //回复评论
-            Comment dbComment = commentMapper.selectById(comment.getParentId());
-            if (dbComment==null){
+            Comment parentComment = commentMapper.selectById(comment.getParentId());
+            if (parentComment==null){
                 throw new CustomizeException(CustomizeErrorCode.COMMENT_NOT_FOUND);
             }
+            //增加评论数
+            UpdateWrapper<Comment> updateWrapper=new UpdateWrapper<>();
+            updateWrapper.setEntity(parentComment).set("comment_count",parentComment.getCommentCount()+1);
+            commentService.update(updateWrapper);
+
             commentMapper.insert(comment);
         }else {
             //回复问题

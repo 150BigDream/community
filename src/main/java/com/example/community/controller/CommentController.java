@@ -45,7 +45,7 @@ public class CommentController {
      */
     @ResponseBody
     @PostMapping("/comment")
-    public Object post(@RequestBody CommentCreateDTO commentCreateDTO,
+    public ResultDTO post(@RequestBody CommentCreateDTO commentCreateDTO,
                        HttpServletRequest request){
         User user = (User) request.getSession().getAttribute("user");
         if (user==null){
@@ -66,7 +66,7 @@ public class CommentController {
     }
 
     /**
-     * 对评论的评论
+     * 列出对评论的评论
      * @param id
      * @return
      */
