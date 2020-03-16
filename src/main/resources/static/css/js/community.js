@@ -131,7 +131,7 @@ function showSelectTag() {
 
 function selectTag(e) {
     let value = e.getAttribute("data-tag");
-    let previous = $("#tag").val();
+    let previous = $("*[name='tag']").val();
     if (previous.indexOf(value) == -1) {
         if (previous) {
             $("#tag").val(previous + ',' + value);

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>publish-community</title>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="/css/community.css">
+    <script src="/css/js/community.js"></script>
+</head>
+<body>
+<!-- 选项卡 -->
+<label >添加标签:</label>
+<input type="text" class="form-control" name="tag"
+       autocomplete="off"
+       placeholder="输入标签，以，号分隔"
+       onclick="showSelectTag()">
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#home">Python</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu1">PHP</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu2">Perl</a>
+    </li>
+</ul>
+
+<!-- 选项卡对应内容 -->
+<div class="tab-content">
+    <div class="tab-pane active container" id="home">Python 是一门解释型、面向对象、动态数据类型的高级程序设计语言</div>
+    <div class="tab-pane container" id="menu1">PHP 是一种流行的通用脚本语言，特别适合 Web 开发</div>
+    <div class="tab-pane container" id="menu2">Perl 又名实用报表提取语言， 是 Practical Extraction and Report Language 的缩写</div>
+</div>
+</body>
+</html>

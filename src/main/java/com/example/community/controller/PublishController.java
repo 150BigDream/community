@@ -1,5 +1,6 @@
 package com.example.community.controller;
 
+import com.example.community.cache.TagCache;
 import com.example.community.mapper.QuestionMapper;
 import com.example.community.model.Question;
 import com.example.community.model.User;
@@ -25,24 +26,28 @@ public class PublishController {
 
     /**
      * 编辑功能
+     *
      * @param id
      * @param model
      * @return
      */
     @GetMapping("/publish/{id}")
-    public String edit(@PathVariable(name = "id")Integer id, Model model){
+    public String edit(@PathVariable(name = "id") Integer id, Model model) {
         Question question = questionMapper.selectById(id);
-        model.addAttribute("question",question);
+        model.addAttribute("tags", TagCache.get());
+        model.addAttribute("question", question);
         return "publish";
     }
 
     @GetMapping("/publish")
-    public String publish(){
+    public String publish(Model model) {
+        model.addAttribute("tags", TagCache.get());
         return "publish";
     }
 
     /**
      * 发布问题
+     *
      * @param title
      * @param description
      * @param tag
@@ -53,19 +58,19 @@ public class PublishController {
      */
     @PostMapping("/publish")
     public String doPublish(
-            @RequestParam("title")String title,
-            @RequestParam("description")String description,
-            @RequestParam("tag")String tag,
-            @RequestParam(value = "id",required = false) Long id,
+            @RequestParam("title") String title,
+            @RequestParam("description") String description,
+            @RequestParam("tag") String tag,
+            @RequestParam(value = "id", required = false) Long id,
             HttpServletRequest request,
             Model model
-    ){
+    ) {
         User user = (User) request.getSession().getAttribute("user");
-        if (user==null){
-            model.addAttribute("error","用户未登录");
+        if (user == null) {
+            model.addAttribute("error", "用户未登录");
             return "publish";
         }
-        Question question=new Question();
+        Question question = new Question();
         question.setTitle(title);
         question.setDescription(description);
         question.setTag(tag);
