@@ -7,7 +7,9 @@
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
     <link rel="stylesheet" type="text/css" href="/css/community.css">
-    <script src="/css/js/community.js"></script>
+    <script src="/js/community.js"></script>
+    <script src="/js/editormd.min.js"></script>
+    <link rel="stylesheet" href="/css/editormd.min.css" />
 </head>
 <body>
 <!--导航条-->
@@ -38,11 +40,24 @@
                            th:value="${question.title}">
                 </div>
 
-                <div class="form-group" th:if="${question}==null">
+                <div class="form-group" th:if="${question}==null" id="editor">
                     <label for="description">问题补充（必填，参考右边提示）：</label>
-                    <textarea name="description" id="description" required class="form-control" cols="30"
+                    <textarea style="display:none;" name="description" id="description" required class="form-control" cols="30"
                               rows="10"></textarea>
                 </div>
+                <script type="text/javascript">
+                    $(function() {
+                        var editor = editormd("editor", {
+                            width: "100%",
+                            height: "350px",
+                            delay: 0,
+                            watch: false,
+                            placeholder: "请输入问题描述",
+                            // markdown: "xxxx",     // dynamic set Markdown text
+                            path : "/lib/"  // Autoload modules mode, codemirror, marked... dependents libs path
+                        });
+                    });
+                </script>
                 <div class="form-group" th:if="${question}!=null">
                     <label for="description2">问题补充（必填，参考右边提示）：</label>
                     <textarea name="description" id="description2" required class="form-control" cols="30" rows="10"
@@ -105,9 +120,9 @@
         </div>
         <div class="col-3">
             <h3>问题发起指南</h3>
-            ·问题标题：用精简语言描述问题，不超过25字
-            ·问题补充：详细内容，并提供相关资料
-            ·选择标签：用逗号分隔，每个标签不超过10个字
+            <li>问题标题：用精简语言描述问题，不超过25字</li>
+            <li>问题补充：详细内容，并提供相关资料</li>
+            <li>选择标签：用逗号分隔，每个标签不超过10个字</li>
         </div>
 
     </div>
