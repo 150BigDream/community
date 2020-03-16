@@ -12,11 +12,12 @@
 </head>
 <script type="application/javascript">
 <!--    可以加上debugger; 调bugger-->
+    //TODO 这里的localStorage应该是有值的，但是debugger看到它没有值，长度为null
     window.onload=function () {
-        var closable=window.localStorage.getItem("closable");
+        var closable= localStorage.getItem("closable")
         if (closable=="true"){
             window.close();
-            window.localStorage.removeItem("closable");
+            localStorage.removeItem("closable");
         }
     }
 </script>

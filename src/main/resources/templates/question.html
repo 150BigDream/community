@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/css/community.css">
     <script src="/css/js/community.js"></script>
     <link rel="stylesheet" type="text/css" href="/font-awesome/css/font-awesome.css">
-</head>
+
 <body>
 <div th:insert="~{navigation :: nav}"></div>
 
@@ -36,7 +36,17 @@
                 <textarea th:text="${question.description}"></textarea>
             </div>
 
+            <!--            标签-->
+            <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <span class="lable label-info question-tag" th:each="tag:${question.tag.split(',')}">
+                    <span class="fa fa-hashtag" aria-hidden="true"></span>
+                    <span class="lable label-info question-tag" th:text="${tag}"></span>
+                </span>
+            </div>
+
             <!--回复-->
+            <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h4>
                     <span th:text="${question.commentCount}"></span> 个回复
@@ -104,7 +114,7 @@
 
         </div>
 
-
+        <!--发起人-->
         <div class="col-3">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h5>发起人</h5>
@@ -122,9 +132,23 @@
                     </div>
                 </div>
             </div>
+
+<!--            这里是一张图片-->
+            <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h5>这里广告/微信啥的</h5>
+                <img class="img-thumbnail question-wechat" src="/img/ad.png"/>
+            </div>
+
+            <!--            相关问题-->
             <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="col-12">
                 <h5>相关问题</h5>
+                <ul class="question-related">
+                    <li th:each="related : ${relatedQuestions}">
+                        <a th:href="@{'/question/'+ ${related.id}}" th:text="${related.title}"></a>
+                    </li>
+                </ul>
             </div>
         </div>
 

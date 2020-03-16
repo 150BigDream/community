@@ -20,6 +20,7 @@ public class indexController {
      * cookie是存在浏览器的。好像明白了，key-value这种形式，key不可以同名，value会被更新掉。但是也会更新的啊，我看token的值没有变
      * 不更新的原因是因为是insert语句而不是update语句吗？有些属性相同的，它就不会再插入了
      *
+     * 列表所有问题页面
      */
     @RequestMapping("/")
     public String index(Model model,

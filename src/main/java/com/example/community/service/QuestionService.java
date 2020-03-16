@@ -4,11 +4,14 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.community.dto.PaginationDTO;
 import com.example.community.dto.QuestionDTO;
 import com.example.community.model.Question;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 /**
- * 组装层，同时用userMapper和questionMapper
+ * 组装层
  */
 @Service
 public interface QuestionService extends IService<Question> {
@@ -16,5 +19,6 @@ public interface QuestionService extends IService<Question> {
     QuestionDTO selectById(Long id);
     PaginationDTO selectAll(Integer page, Integer size);
     PaginationDTO selectList(Long userId, Integer page, Integer size);
+
 
 }

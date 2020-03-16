@@ -41,6 +41,16 @@ public class PublishController {
         return "publish";
     }
 
+    /**
+     * 发布问题
+     * @param title
+     * @param description
+     * @param tag
+     * @param id
+     * @param request
+     * @param model
+     * @return
+     */
     @PostMapping("/publish")
     public String doPublish(
             @RequestParam("title")String title,

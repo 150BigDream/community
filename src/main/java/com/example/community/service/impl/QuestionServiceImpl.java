@@ -2,6 +2,7 @@ package com.example.community.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.example.community.Exception.CustomizeErrorCode;
 import com.example.community.Exception.CustomizeException;
 import com.example.community.dto.PaginationDTO;
@@ -17,7 +18,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -36,6 +39,12 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
     @Autowired
     QuestionServiceImpl questionService;
 
+    /**
+     * 列表所有问题
+     * @param page
+     * @param size
+     * @return
+     */
     public PaginationDTO selectAll(Integer page, Integer size) {
         Integer totalPage;
         PaginationDTO paginationDTO = new PaginationDTO();
@@ -71,6 +80,13 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
         return paginationDTO;
     }
 
+    /**
+     * 根据id选择出我的问题
+     * @param userId
+     * @param page
+     * @param size
+     * @return
+     */
     public PaginationDTO selectList(Long userId, Integer page, Integer size) {
         Integer totalPage;
         PaginationDTO paginationDTO = new PaginationDTO();
@@ -143,5 +159,29 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
             dbQuestion.setGmtModified(System.currentTimeMillis());
             questionMapper.updateById(dbQuestion);
         }
+    }
+
+    /**
+     * 根据正则标签查询到相近的问题
+     * @param queryDTO
+     * @return
+     */
+    public List<QuestionDTO> selectRelated(QuestionDTO queryDTO) {
+        if (queryDTO.getTag()==null){
+            return new ArrayList<>();
+        }
+        String[] tags= StringUtils.split(queryDTO.getTag(),",");
+        String regexpTag= Arrays.stream(tags).collect(Collectors.joining("|"));
+        Question question = new Question();
+        question.setId(queryDTO.getId());
+        question.setTag(regexpTag);
+
+        List<Question> questions = questionMapper.selectRelated(question);
+        List<QuestionDTO> questionDTOS = questions.stream().map(q -> {
+            QuestionDTO questionDTO = new QuestionDTO();
+            BeanUtils.copyProperties(q, questionDTO);
+            return questionDTO;
+        }).collect(Collectors.toList());
+        return questionDTOS;
     }
 }
