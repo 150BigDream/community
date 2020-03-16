@@ -106,10 +106,9 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
             page = totalPage;
         }
 
-
         paginationDTO.setPagination(totalPage,page);
 
-        Integer offset = page < 1 ? 0 : size * (page - 1);
+        Integer offset = size * (page - 1);
         List<Question> questions=questionMapper.selectListByUserId(userId,offset,size);
         List<QuestionDTO> questionDTOList=new ArrayList<>();
 

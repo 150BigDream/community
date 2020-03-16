@@ -38,6 +38,7 @@
             <li class="nav-item dropdown row float-right" th:if="${session.user!=null}">
 
                 <span><a class="nav-link" href="/publish" >提问</a></span>
+                <a class="nav-link" href="/profile/replies" >通知<span class="badge badge-light" th:text="${session.unreadCount}">4</span></a>
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
                     我

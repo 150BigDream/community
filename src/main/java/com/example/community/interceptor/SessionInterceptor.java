@@ -3,6 +3,7 @@ package com.example.community.interceptor;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.community.mapper.UserMapper;
 import com.example.community.model.User;
+import com.example.community.service.impl.NotificationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -11,15 +12,18 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Service
 public class SessionInterceptor implements HandlerInterceptor {
     @Autowired
     UserMapper userMapper;
+    @Autowired
+    NotificationServiceImpl notificationService;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        User user = null;
         Cookie[] cookies = request.getCookies();
         if (cookies != null && cookies.length != 0) {
             for (Cookie cookie : cookies
@@ -28,9 +32,12 @@ public class SessionInterceptor implements HandlerInterceptor {
                     String token = cookie.getValue();
                     QueryWrapper<User> queryWrapper = new QueryWrapper();
                     queryWrapper.eq("token", token);
-                    user = userMapper.selectOne(queryWrapper);
-                    if (user != null) {
-                        request.getSession().setAttribute("user", user);
+                    List<User> users = userMapper.selectList(queryWrapper);
+                    if (users.size() != 0) {
+                        HttpSession session=request.getSession();
+                        session.setAttribute("user",users.get(0));
+                        int unreadCount = notificationService.unreadCount(users.get(0).getId());
+                        session.setAttribute("unreadCount", unreadCount);
                     }
                     break;
                 }

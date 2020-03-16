@@ -6,10 +6,14 @@ import com.example.community.Exception.CustomizeErrorCode;
 import com.example.community.Exception.CustomizeException;
 import com.example.community.dto.CommentDTO;
 import com.example.community.enums.CommentTypeEnum;
+import com.example.community.enums.NotificationStatusEnum;
+import com.example.community.enums.NotificationTypeEnum;
+import com.example.community.mapper.NotificationMapper;
 import com.example.community.mapper.QuestionMapper;
 import com.example.community.mapper.UserMapper;
 import com.example.community.model.Comment;
 import com.example.community.mapper.CommentMapper;
+import com.example.community.model.Notification;
 import com.example.community.model.Question;
 import com.example.community.model.User;
 import com.example.community.service.CommentService;
@@ -45,9 +49,11 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
     QuestionServiceImpl questionService;
     @Autowired
     UserMapper userMapper;
+    @Autowired
+    NotificationMapper notificationMapper;
 
     @Transactional
-    public void insert(Comment comment) {
+    public void insert(Comment comment, User commentator) {
         //问题对不上
         if (comment.getParentId()==null||comment.getParentId()==0){
             throw new CustomizeException(CustomizeErrorCode.TARGET_PARAM_NOT_FOUND);
@@ -62,19 +68,29 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
             if (parentComment==null){
                 throw new CustomizeException(CustomizeErrorCode.COMMENT_NOT_FOUND);
             }
-            //增加评论数
-            UpdateWrapper<Comment> updateWrapper=new UpdateWrapper<>();
-            updateWrapper.setEntity(parentComment).set("comment_count",parentComment.getCommentCount()+1);
-            commentService.update(updateWrapper);
 
-            commentMapper.insert(comment);
-        }else {
             //回复问题
             Question dbQuestion = questionMapper.selectById(comment.getParentId());
             if (dbQuestion==null){
                 throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
             }
 
+            commentMapper.insert(comment);
+
+            //增加评论数
+            UpdateWrapper<Comment> updateWrapper=new UpdateWrapper<>();
+            updateWrapper.setEntity(parentComment).set("comment_count",parentComment.getCommentCount()+1);
+            commentService.update(updateWrapper);
+
+            // 创建通知
+            createNotify(comment, parentComment.getCommentator(), commentator.getName(), dbQuestion.getTitle(), NotificationTypeEnum.REPLY_COMMENT, dbQuestion.getId());
+        }else {
+
+            //回复问题
+            Question dbQuestion = questionMapper.selectById(comment.getParentId());
+            if (dbQuestion==null){
+                throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
+            }
             //两个sql语句，因为抖动之类的原因有语句可能回执行失败
             // 可以用事务commit，但是在实际开发中，insert是主逻辑，要保证插入，而更新应该用其他的手段去恢复
             commentMapper.insert(comment);
@@ -83,7 +99,36 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
             updateWrapper.set("comment_count",dbQuestion.getCommentCount()+1)
             .setEntity(dbQuestion);
             questionService.update(updateWrapper);
+
+            // 创建通知
+            createNotify(comment, dbQuestion.getCreator(), commentator.getName(), dbQuestion.getTitle(), NotificationTypeEnum.REPLY_QUESTION, dbQuestion.getId());
         }
+    }
+
+    /**
+     *
+     * @param comment   评论
+     * @param receiver  接收到通知的人的id
+     * @param notifierName  引起通知的人
+     * @param outerTitle    标题
+     * @param notificationType  类型
+     * @param outerId
+     */
+    private void createNotify(Comment comment, Long receiver, String notifierName, String outerTitle, NotificationTypeEnum notificationType, Long outerId) {
+        //自己评论自己就啥也不做
+        if (receiver == comment.getCommentator()) {
+            return;
+        }
+        Notification notification = new Notification();
+        notification.setGmtCreate(System.currentTimeMillis());
+        notification.setType(notificationType.getType());
+        notification.setOuterId(outerId);
+        notification.setNotifier(comment.getCommentator());
+        notification.setStatus(NotificationStatusEnum.UNREAD.getStatus());
+        notification.setReceiver(receiver);
+        notification.setNotifierName(notifierName);
+        notification.setOuterTitle(outerTitle);
+        notificationMapper.insert(notification);
     }
 
     /**
