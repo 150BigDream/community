@@ -5,6 +5,7 @@ import com.example.community.provider.GithubProvider;
 import com.example.community.dto.AccessTokenDTO;
 import com.example.community.dto.GithubUser;
 import com.example.community.service.impl.UserServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.UUID;
 
 @Controller
+@Slf4j
 public class AuthorizeController {
     @Autowired
     private GithubProvider githubProvider;
@@ -62,6 +64,7 @@ public class AuthorizeController {
             System.out.println("登陆成功");
 
         } else {
+            log.error("github sign in fail,{}",githubUser);
             //登陆失败
             System.out.println("登陆失败");
         }

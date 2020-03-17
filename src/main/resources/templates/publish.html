@@ -10,6 +10,8 @@
     <script src="/js/community.js"></script>
     <script src="/js/editormd.min.js"></script>
     <link rel="stylesheet" href="/css/editormd.min.css" />
+
+    <script src="/js/image-dialog.js"></script>
 </head>
 <body>
 <!--导航条-->
@@ -54,7 +56,10 @@
                             watch: false,
                             placeholder: "请输入问题描述",
                             // markdown: "xxxx",     // dynamic set Markdown text
-                            path : "/lib/"  // Autoload modules mode, codemirror, marked... dependents libs path
+                            path : "/lib/",  // Autoload modules mode, codemirror, marked... dependents libs path
+                            imageUpload: true,
+                            imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                            imageUploadURL: "/file/upload",
                         });
                     });
                 </script>
@@ -127,5 +132,6 @@
 
     </div>
 </div>
+<div th:insert="~{footer :: foot}"></div>
 </body>
 </html>
