@@ -1,7 +1,7 @@
 package com.example.community.controller;
 
 
-import com.example.community.Exception.CustomizeErrorCode;
+import com.example.community.exception.CustomizeErrorCode;
 import com.example.community.dto.CommentCreateDTO;
 import com.example.community.dto.CommentDTO;
 import com.example.community.dto.ResultDTO;

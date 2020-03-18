@@ -22,4 +22,7 @@ public interface QuestionMapper extends BaseMapper<Question> {
     //根据正则的方式匹配 标签
     @Select("select * from question where id!=#{id} and tag REGEXP #{tag}")
     List<Question> selectRelated(Question question);
+
+    @Select("select * from question limit #{offset},#{pageSize}")
+    List<Question> list(@Param("offset")int offset,@Param("pageSize")int pageSize);
 }

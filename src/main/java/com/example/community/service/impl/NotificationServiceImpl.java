@@ -1,20 +1,17 @@
 package com.example.community.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.example.community.Exception.CustomizeErrorCode;
-import com.example.community.Exception.CustomizeException;
+import com.example.community.exception.CustomizeErrorCode;
+import com.example.community.exception.CustomizeException;
 import com.example.community.dto.NotificationDTO;
 import com.example.community.dto.PaginationDTO;
-import com.example.community.dto.QuestionDTO;
 import com.example.community.enums.NotificationStatusEnum;
 import com.example.community.enums.NotificationTypeEnum;
 import com.example.community.model.Notification;
 import com.example.community.mapper.NotificationMapper;
-import com.example.community.model.Question;
 import com.example.community.model.User;
 import com.example.community.service.NotificationService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

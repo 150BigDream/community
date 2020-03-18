@@ -1,10 +1,9 @@
 package com.example.community.provider;
 
 import com.aliyun.oss.OSS;
-import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.OSSClientBuilder;
-import com.example.community.Exception.CustomizeErrorCode;
-import com.example.community.Exception.CustomizeException;
+import com.example.community.exception.CustomizeErrorCode;
+import com.example.community.exception.CustomizeException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -12,8 +11,6 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 import java.io.InputStream;
 import java.net.URL;
-import java.security.SecureRandom;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 

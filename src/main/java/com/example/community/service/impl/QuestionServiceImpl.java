@@ -3,8 +3,8 @@ package com.example.community.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
-import com.example.community.Exception.CustomizeErrorCode;
-import com.example.community.Exception.CustomizeException;
+import com.example.community.exception.CustomizeErrorCode;
+import com.example.community.exception.CustomizeException;
 import com.example.community.dto.PaginationDTO;
 import com.example.community.dto.QuestionDTO;
 import com.example.community.mapper.UserMapper;
@@ -64,7 +64,7 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
 
         paginationDTO.setPagination(totalPage,page);
 
-        Integer offset = page < 1 ? 0 : size * (page - 1);
+        Integer offset =size * (page - 1);
         List<Question> questions=questionMapper.selectList(offset,size);
 
         List<QuestionDTO> questionDTOList=new ArrayList<>();

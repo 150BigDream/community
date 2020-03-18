@@ -1,6 +1,8 @@
 package com.example.community.utils;
 
+import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClient;
+import com.aliyun.oss.OSSClientBuilder;
 import com.aliyun.oss.model.ObjectMetadata;
 import com.aliyun.oss.model.PutObjectResult;
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +34,7 @@ public class OSSClientUtil {
     private String endpoint;
 
     //文件存储目录
-    private String filedir = "E:/project/ideaProject/pic/";
+    private String filedir = "APP/";
     /**
      *
      * 上传图片
@@ -75,7 +77,7 @@ public class OSSClientUtil {
             objectMetadata.setContentDisposition("inline;filename=" + fileName);
             //上传文件
 
-            OSSClient ossClient = new OSSClient(endpoint, accessKeyId, accessKeySecret);
+            OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
             PutObjectResult putResult = ossClient.putObject(bucketName, filedir + fileName, instream, objectMetadata);
             ret = putResult.getETag();
         } catch (IOException e) {

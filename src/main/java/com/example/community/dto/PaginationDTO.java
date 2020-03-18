@@ -14,8 +14,12 @@ public class PaginationDTO<T> {
     private boolean showFirstPage;
     private boolean showNext;
     private boolean showEndPage;
+
+    //开始页数
     private Integer page;
+
     private List<Integer> pages = new ArrayList<>();
+    //总页数
     private Integer totalPage;
 
     public void setPagination(Integer totalPage, Integer page) {//第一页,25数据/5=5页.第四页，40数据/5=7页

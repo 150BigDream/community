@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.community.model.User;
 import com.example.community.service.impl.UserServiceImpl;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,12 +41,5 @@ public class UserMapperTest {
         userMapper.insert(user);
     }
 
-    @Test
-    public void findByToken() {
-        QueryWrapper<User> queryWrapper=new QueryWrapper<>();
-        queryWrapper.eq("token","40172791-b1be-48d2-85fa-d40d6a58b3d7");
-        User user = userMapper.selectOne(queryWrapper);
-        System.out.println(user.getName());
-    }
 
 }

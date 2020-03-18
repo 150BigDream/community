@@ -1,4 +1,4 @@
-package com.example.community.Exception;
+package com.example.community.exception;
 
 /**
  * 自定义的错误类型接口

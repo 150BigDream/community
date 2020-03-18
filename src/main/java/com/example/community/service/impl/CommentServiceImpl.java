@@ -2,8 +2,8 @@ package com.example.community.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.example.community.Exception.CustomizeErrorCode;
-import com.example.community.Exception.CustomizeException;
+import com.example.community.exception.CustomizeErrorCode;
+import com.example.community.exception.CustomizeException;
 import com.example.community.dto.CommentDTO;
 import com.example.community.enums.CommentTypeEnum;
 import com.example.community.enums.NotificationStatusEnum;

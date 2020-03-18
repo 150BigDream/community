@@ -1,8 +1,8 @@
 package com.example.community.advice;
 
 import com.alibaba.fastjson.JSON;
-import com.example.community.Exception.CustomizeErrorCode;
-import com.example.community.Exception.CustomizeException;
+import com.example.community.exception.CustomizeErrorCode;
+import com.example.community.exception.CustomizeException;
 import com.example.community.dto.ResultDTO;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;

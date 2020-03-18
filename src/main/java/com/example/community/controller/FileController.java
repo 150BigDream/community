@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
-
+//TODO 图片上传功能fail
 @Controller
 @Slf4j
 public class FileController {
@@ -22,7 +22,6 @@ public class FileController {
     @RequestMapping("/file/upload")
     @ResponseBody
     public FileDTO upload(HttpServletRequest request) {
-
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
         MultipartFile file = multipartRequest.getFile("editormd-image-file");
         try {

@@ -10,29 +10,30 @@
     <script src="/static/js/community.js"></script>
 </head>
 <body>
-<!-- 选项卡 -->
-<label >添加标签:</label>
-<input type="text" class="form-control" name="tag"
-       autocomplete="off"
-       placeholder="输入标签，以，号分隔"
-       onclick="showSelectTag()">
-<ul class="nav nav-tabs">
-    <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#home">Python</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#menu1">PHP</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#menu2">Perl</a>
-    </li>
-</ul>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item" th:if="${pageInfo.isFirstPage()}">
+            <a class="page-link" aria-label="Previous" href="/?pageNum=1">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li th:if="${pageInfo.hasPreviousPage}" class="page-item">
+            <a th:href="@{/(pageNum=${pageInfo.pageNum-1})}" class="page-link">&lt;</a>
+        </li>
 
-<!-- 选项卡对应内容 -->
-<div class="tab-content">
-    <div class="tab-pane active container" id="home">Python 是一门解释型、面向对象、动态数据类型的高级程序设计语言</div>
-    <div class="tab-pane container" id="menu1">PHP 是一种流行的通用脚本语言，特别适合 Web 开发</div>
-    <div class="tab-pane container" id="menu2">Perl 又名实用报表提取语言， 是 Practical Extraction and Report Language 的缩写</div>
-</div>
+        <li th:each="pageNum:${pageInfo.getNavigatepageNums()}" th:class="${pageInfo.pageNum==pageNum}?'active':''">
+            <a th:href="@{/(pageNum=${pageNum})}" th:text="${pageNum}" class="page-link">
+            </a>
+        </li>
+
+        <li class="page-item" th:if="${pageInfo.hasNextPage}"><a th:href="@{/(pageNum=${pageInfo.pageNum+1})}"
+                                                              class="page-link">&gt;</a></li>
+        <li class="page-item" th:if="${pageInfo.isLastPage()}">
+            <a th:href="@{/(pageNum=${pageInfo.getNavigatePages()})}" class="page-link" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
 </body>
 </html>

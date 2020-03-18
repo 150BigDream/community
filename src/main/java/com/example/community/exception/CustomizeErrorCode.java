@@ -1,4 +1,4 @@
-package com.example.community.Exception;
+package com.example.community.exception;
 
 public enum CustomizeErrorCode implements ICustomizeErrorCode {
 
