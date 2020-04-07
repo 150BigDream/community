@@ -47,7 +47,7 @@ function comment2target(targetId, type, content) {
                     let isAccepted = confirm(response.message);
                     if (isAccepted) {
                         window.open("https://github.com/login/oauth/authorize?client_id=c05a2ccc4a4995c1b2e2&redirect_uri=http://localhost:8080/callback&scope=user&state=1");
-                        localStorage.setItem("closable","true");
+                        window.localStorage.setItem("closable",true);
                     }
                 } else {
                     alert(response.message);
@@ -59,7 +59,7 @@ function comment2target(targetId, type, content) {
 }
 
 /**
- * 展开二级评论  //TODO 提交对评论的评论话，框要继续展开
+ * 展开二级评论  //TODO 提交对评论的评论后，框要继续展开
  */
 function collapseComments(e) {
     var id = e.getAttribute("data-id");

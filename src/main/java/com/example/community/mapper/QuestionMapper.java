@@ -12,8 +12,7 @@ import java.util.List;
 @Repository
 public interface QuestionMapper extends BaseMapper<Question> {
 
-    //TODO 这里优化为根据时间创建时间倒序排列  ORDER BY gmt_create DESC
-    @Select("select * from question limit #{offset},#{size}")
+    @Select("select * from question  ORDER BY gmt_create DESC limit #{offset},#{size}")
     List<Question> selectList(@Param("offset") Integer offset, @Param("size") Integer size);
 
     @Select("select * from question where creator=#{userId} limit #{offset},#{size}")

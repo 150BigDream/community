@@ -16,7 +16,6 @@ import java.util.List;
  */
 public interface NotificationMapper extends BaseMapper<Notification> {
 
-    //TODO 时间降序
-    @Select("select * from notification where receiver=#{userId} limit #{offset},#{size}")
+    @Select("select * from notification where receiver=#{userId} ORDER BY gmt_create DESC limit #{offset},#{size}")
     List<Notification> selectListByUserId(Long userId, Integer offset, Integer size);
 }

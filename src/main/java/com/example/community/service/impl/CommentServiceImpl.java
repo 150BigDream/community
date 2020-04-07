@@ -70,7 +70,7 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
             }
 
             //回复问题
-            Question dbQuestion = questionMapper.selectById(comment.getParentId());
+            Question dbQuestion = questionMapper.selectById(parentComment.getParentId());
             if (dbQuestion==null){
                 throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
             }

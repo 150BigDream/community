@@ -19,7 +19,7 @@
 
 <div class="container-fluid main">
     <div class="row">
-        <div class="col-9">
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
             <h3><span th:text="${question.title}"></span></h3>
             <span class="text-desc">
                 作者：<span th:text="${question.user.name}"></span> |
@@ -75,7 +75,7 @@
                             <div th:text="${comment.content}"></div>
                             <div class="menu">
                                 <span class="fa fa-thumbs-o-up icon"></span>
-                                <span th:da qta-id="${comment.id}"
+                                <span th:data-id="${comment.id}"
                                       data-parent="${'comment-'+comment.id}" onclick="collapseComments(this)"
                                       class="comment-icon ">
                                     <span class="fa fa-twitch"></span>
@@ -102,7 +102,6 @@
             </div>
 
             <!--            留下评论-->
-<!--            <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comment-sp">-->
             <div><h4>提交回复</h4></div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="comment_section">
                 <div class="media">
@@ -123,7 +122,7 @@
         </div>
 
         <!--发起人-->
-        <div class="col-3">
+        <div  class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h5>发起人</h5>
                 <div class="media">
