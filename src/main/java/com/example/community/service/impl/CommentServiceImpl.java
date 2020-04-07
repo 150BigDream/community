@@ -148,7 +148,6 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
             return new ArrayList<>();
         }
 
-        //TODO 看一下这相关的内容
         //获取去重的评论人id
         Set<Long> commentators = comments.stream().map(comment -> comment.getCommentator()).collect(Collectors.toSet());
         List<Long> userIds = new ArrayList<>();

@@ -1,6 +1,7 @@
 package com.example.community.controller;
 
 import com.example.community.dto.FileDTO;
+import com.example.community.provider.AliyunProvider;
 import com.example.community.utils.OSSClientUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,26 +18,25 @@ import javax.servlet.http.HttpServletRequest;
 public class FileController {
 
     @Autowired
-    private OSSClientUtil ossClientUtil;
+    private AliyunProvider aliyunProvider;
 
     @RequestMapping("/file/upload")
     @ResponseBody
     public FileDTO upload(HttpServletRequest request) {
-        MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
-        MultipartFile file = multipartRequest.getFile("editormd-image-file");
+        MultipartFile file = ((MultipartHttpServletRequest) request).getFile("editormd-image-file");
         try {
-            //获取单图片路径
-            String imageUrl = ossClientUtil.checkImage(file);  //image 为MultipartFile类型
+            String fileName = aliyunProvider.upload(file.getInputStream(), file.getOriginalFilename());
+
             FileDTO fileDTO = new FileDTO();
             fileDTO.setSuccess(1);
-            fileDTO.setUrl(imageUrl);
+            fileDTO.setUrl(fileName);
             return fileDTO;
         } catch (Exception e) {
-            log.error("upload error", e);
-            FileDTO fileDTO = new FileDTO();
-            fileDTO.setSuccess(0);
-            fileDTO.setMessage("上传失败");
-            return fileDTO;
+            e.printStackTrace();
         }
+        FileDTO fileDTO = new FileDTO();
+        fileDTO.setSuccess(1);
+        fileDTO.setUrl("/images/ad.png");
+        return fileDTO;
     }
 }

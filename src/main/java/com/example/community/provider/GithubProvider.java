@@ -3,6 +3,7 @@ package com.example.community.provider;
 import com.alibaba.fastjson.JSON;
 import com.example.community.dto.AccessTokenDTO;
 import com.example.community.dto.GithubUser;
+import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +13,7 @@ import java.io.IOException;
  * 用java模拟post请求
  */
 @Component
+@Slf4j
 public class GithubProvider {
     //java模拟post请求
     public String getAccessToken(AccessTokenDTO accessTokenDto) {
@@ -44,6 +46,7 @@ public class GithubProvider {
         try{
             Response response = client.newCall(request).execute();
             String string= response.body().string();
+            log.info("json string 的信息,{}",string);//可以看到这里是下划线的
             //将json类型的string转化为一个类对象
             GithubUser githubUser = JSON.parseObject(string, GithubUser.class);
             return githubUser;

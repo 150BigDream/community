@@ -1,24 +1,45 @@
-2020-03-18 00:35:08.554  INFO 7120 --- [restartedMain] c.e.community.CommunityApplication       : Starting CommunityApplication on DESKTOP-O8I92TC with PID 7120 (E:\project\ideaProject\community\target\classes started by 今天你学习了吗 in E:\project\ideaProject\community)
-2020-03-18 00:35:08.575  INFO 7120 --- [restartedMain] c.e.community.CommunityApplication       : No active profile set, falling back to default profiles: default
-2020-03-18 00:35:08.974  INFO 7120 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2020-03-18 00:35:08.976  INFO 7120 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2020-03-18 00:35:13.492  INFO 7120 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2020-03-18 00:35:13.532  INFO 7120 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-03-18 00:35:13.532  INFO 7120 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
-2020-03-18 00:35:13.845  INFO 7120 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-03-18 00:35:13.846  INFO 7120 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4869 ms
-2020-03-18 00:35:14.030  INFO 7120 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-03-18 00:35:14.668  INFO 7120 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-03-18 00:35:14.674  INFO 7120 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://127.0.0.1/community?characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Taipei'
-2020-03-18 00:35:21.417  WARN 7120 --- [restartedMain] c.b.m.core.injector.AbstractMethod       : [com.example.community.mapper.QuestionMapper.selectList] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.SelectList]
-2020-03-18 00:35:22.267  WARN 7120 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'pageInfoTestController': Unsatisfied dependency expressed through field 'pageInfo'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.example.community.dto.PageInfo<?>' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-2020-03-18 00:35:22.270  INFO 7120 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2020-03-18 00:35:22.293  INFO 7120 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2020-03-18 00:35:22.302  INFO 7120 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2020-03-18 00:35:22.378  INFO 7120 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+2020-04-07 10:38:44.700  INFO 38536 --- [Thread-1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-07 10:38:44.777  INFO 38536 --- [Thread-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-04-07 10:38:44.821  INFO 38536 --- [Thread-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-04-07 10:38:47.052  INFO 38536 --- [restartedMain] c.e.community.CommunityApplication       : Starting CommunityApplication on DESKTOP-O8I92TC with PID 38536 (E:\project\ideaProject\community\target\classes started by 今天你学习了吗 in E:\project\ideaProject\community)
+2020-04-07 10:38:47.054  INFO 38536 --- [restartedMain] c.e.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-04-07 10:38:49.375  INFO 38536 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-07 10:38:49.377  INFO 38536 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-07 10:38:49.378  INFO 38536 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-04-07 10:38:49.487  INFO 38536 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-07 10:38:49.489  INFO 38536 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2424 ms
+2020-04-07 10:38:49.532  INFO 38536 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2020-04-07 10:38:49.537  INFO 38536 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2020-04-07 10:38:49.538  INFO 38536 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://127.0.0.1/community?characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Taipei'
+2020-04-07 10:38:50.122  WARN 38536 --- [restartedMain] c.b.m.core.injector.AbstractMethod       : [com.example.community.mapper.QuestionMapper.selectList] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.SelectList]
+2020-04-07 10:38:51.057  INFO 38536 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-07 10:38:51.113  INFO 38536 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-04-07 10:38:51.738  INFO 38536 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-04-07 10:38:51.779  INFO 38536 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-07 10:38:51.780  INFO 38536 --- [restartedMain] c.e.community.CommunityApplication       : Started CommunityApplication in 4.86 seconds (JVM running for 64438.265)
+2020-04-07 10:38:51.783  INFO 38536 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-04-07 11:06:13.120  INFO 38536 --- [Thread-11] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-07 11:06:13.123  INFO 38536 --- [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2020-04-07 11:06:13.133  INFO 38536 --- [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2020-04-07 11:06:13.972  INFO 38536 --- [restartedMain] c.e.community.CommunityApplication       : Starting CommunityApplication on DESKTOP-O8I92TC with PID 38536 (E:\project\ideaProject\community\target\classes started by 今天你学习了吗 in E:\project\ideaProject\community)
+2020-04-07 11:06:13.973  INFO 38536 --- [restartedMain] c.e.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-04-07 11:06:15.316  INFO 38536 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-07 11:06:15.320  INFO 38536 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-07 11:06:15.321  INFO 38536 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-04-07 11:06:15.383  INFO 38536 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-07 11:06:15.384  INFO 38536 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1401 ms
+2020-04-07 11:06:15.402  INFO 38536 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2020-04-07 11:06:15.405  INFO 38536 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2020-04-07 11:06:15.409  INFO 38536 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://127.0.0.1/community?characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Taipei'
+2020-04-07 11:06:15.598  WARN 38536 --- [restartedMain] c.b.m.core.injector.AbstractMethod       : [com.example.community.mapper.QuestionMapper.selectList] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.SelectList]
+2020-04-07 11:06:15.898  WARN 38536 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'commentController': Unsatisfied dependency expressed through field 'commentService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.example.community.service.impl.CommentServiceImpl' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2020-04-07 11:06:15.898  INFO 38536 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2020-04-07 11:06:15.904  INFO 38536 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2020-04-07 11:06:15.905  INFO 38536 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-04-07 11:06:15.929  INFO 38536 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2020-03-18 00:35:22.910 ERROR 7120 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2020-04-07 11:06:16.335 ERROR 38536 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
 ***************************
 APPLICATION FAILED TO START
@@ -26,7 +47,7 @@ APPLICATION FAILED TO START
 
 Description:
 
-Field pageInfo in com.example.community.controller.PageInfoTestController required a bean of type 'com.example.community.dto.PageInfo' that could not be found.
+Field commentService in com.example.community.controller.CommentController required a bean of type 'com.example.community.service.impl.CommentServiceImpl' that could not be found.
 
 The injection point has the following annotations:
 	- @org.springframework.beans.factory.annotation.Autowired(required=true)
@@ -34,197 +55,22 @@ The injection point has the following annotations:
 
 Action:
 
-Consider defining a bean of type 'com.example.community.dto.PageInfo' in your configuration.
+Consider defining a bean of type 'com.example.community.service.impl.CommentServiceImpl' in your configuration.
 
-2020-03-18 00:36:07.428  INFO 7832 --- [restartedMain] c.e.community.CommunityApplication       : Starting CommunityApplication on DESKTOP-O8I92TC with PID 7832 (E:\project\ideaProject\community\target\classes started by 今天你学习了吗 in E:\project\ideaProject\community)
-2020-03-18 00:36:07.434  INFO 7832 --- [restartedMain] c.e.community.CommunityApplication       : No active profile set, falling back to default profiles: default
-2020-03-18 00:36:07.582  INFO 7832 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2020-03-18 00:36:07.583  INFO 7832 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2020-03-18 00:36:10.235  INFO 7832 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2020-03-18 00:36:10.252  INFO 7832 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-03-18 00:36:10.253  INFO 7832 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
-2020-03-18 00:36:10.498  INFO 7832 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-03-18 00:36:10.498  INFO 7832 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2914 ms
-2020-03-18 00:36:10.624  INFO 7832 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-03-18 00:36:10.836  INFO 7832 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-03-18 00:36:10.844  INFO 7832 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://127.0.0.1/community?characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Taipei'
-2020-03-18 00:36:11.442  WARN 7832 --- [restartedMain] c.b.m.core.injector.AbstractMethod       : [com.example.community.mapper.QuestionMapper.selectList] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.SelectList]
-2020-03-18 00:36:12.093  WARN 7832 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'pageInfoTestController': Unsatisfied dependency expressed through field 'pageInfo'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.example.community.dto.PageInfo<?>' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-2020-03-18 00:36:12.094  INFO 7832 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2020-03-18 00:36:12.107  INFO 7832 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2020-03-18 00:36:12.110  INFO 7832 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2020-03-18 00:36:12.125  INFO 7832 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
-
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2020-03-18 00:36:12.354 ERROR 7832 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Field pageInfo in com.example.community.controller.PageInfoTestController required a bean of type 'com.example.community.dto.PageInfo' that could not be found.
-
-The injection point has the following annotations:
-	- @org.springframework.beans.factory.annotation.Autowired(required=true)
-
-
-Action:
-
-Consider defining a bean of type 'com.example.community.dto.PageInfo' in your configuration.
-
-2020-03-18 00:38:04.827  INFO 19696 --- [restartedMain] c.e.community.CommunityApplication       : Starting CommunityApplication on DESKTOP-O8I92TC with PID 19696 (E:\project\ideaProject\community\target\classes started by 今天你学习了吗 in E:\project\ideaProject\community)
-2020-03-18 00:38:04.831  INFO 19696 --- [restartedMain] c.e.community.CommunityApplication       : No active profile set, falling back to default profiles: default
-2020-03-18 00:38:04.948  INFO 19696 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2020-03-18 00:38:04.949  INFO 19696 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2020-03-18 00:38:07.173  INFO 19696 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2020-03-18 00:38:07.200  INFO 19696 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-03-18 00:38:07.200  INFO 19696 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
-2020-03-18 00:38:07.454  INFO 19696 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-03-18 00:38:07.454  INFO 19696 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2505 ms
-2020-03-18 00:38:07.526  INFO 19696 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-03-18 00:38:07.773  INFO 19696 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-03-18 00:38:07.778  INFO 19696 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://127.0.0.1/community?characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Taipei'
-2020-03-18 00:38:08.212  WARN 19696 --- [restartedMain] c.b.m.core.injector.AbstractMethod       : [com.example.community.mapper.QuestionMapper.selectList] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.SelectList]
-2020-03-18 00:38:09.034  INFO 19696 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-03-18 00:38:09.157  INFO 19696 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
-2020-03-18 00:38:09.977  INFO 19696 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2020-03-18 00:38:10.044  INFO 19696 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2020-03-18 00:38:10.048  INFO 19696 --- [restartedMain] c.e.community.CommunityApplication       : Started CommunityApplication in 5.793 seconds (JVM running for 7.654)
-2020-03-18 00:38:20.557  INFO 19696 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-03-18 00:38:20.558  INFO 19696 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2020-03-18 00:38:20.574  INFO 19696 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 16 ms
-2020-03-18 00:38:20.838  WARN 19696 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.jdbc.BadSqlGrammarException: 
-### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(1-1)*1,{pageSize}' at line 1
-### The error may exist in com/example/community/mapper/QuestionMapper.java (best guess)
-### The error may involve com.example.community.mapper.QuestionMapper.list-Inline
-### The error occurred while setting parameters
-### SQL: select * from question limit(?-1)*?,{pageSize}
-### Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(1-1)*1,{pageSize}' at line 1
-; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(1-1)*1,{pageSize}' at line 1]
-2020-03-18 00:39:27.236  INFO 10584 --- [restartedMain] c.e.community.CommunityApplication       : Starting CommunityApplication on DESKTOP-O8I92TC with PID 10584 (E:\project\ideaProject\community\target\classes started by 今天你学习了吗 in E:\project\ideaProject\community)
-2020-03-18 00:39:27.240  INFO 10584 --- [restartedMain] c.e.community.CommunityApplication       : No active profile set, falling back to default profiles: default
-2020-03-18 00:39:27.352  INFO 10584 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2020-03-18 00:39:27.354  INFO 10584 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2020-03-18 00:39:29.413  INFO 10584 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2020-03-18 00:39:29.430  INFO 10584 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-03-18 00:39:29.431  INFO 10584 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
-2020-03-18 00:39:29.679  INFO 10584 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-03-18 00:39:29.679  INFO 10584 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2325 ms
-2020-03-18 00:39:29.767  INFO 10584 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-03-18 00:39:29.981  INFO 10584 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-03-18 00:39:29.986  INFO 10584 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://127.0.0.1/community?characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Taipei'
-2020-03-18 00:39:30.416  WARN 10584 --- [restartedMain] c.b.m.core.injector.AbstractMethod       : [com.example.community.mapper.QuestionMapper.selectList] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.SelectList]
-2020-03-18 00:39:31.081  INFO 10584 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-03-18 00:39:31.176  INFO 10584 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
-2020-03-18 00:39:31.863  INFO 10584 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2020-03-18 00:39:31.919  INFO 10584 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2020-03-18 00:39:31.922  INFO 10584 --- [restartedMain] c.e.community.CommunityApplication       : Started CommunityApplication in 5.268 seconds (JVM running for 7.255)
-2020-03-18 00:39:47.358  INFO 10584 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-03-18 00:39:47.359  INFO 10584 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2020-03-18 00:39:47.369  INFO 10584 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
-2020-03-18 00:39:47.534  WARN 10584 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.jdbc.BadSqlGrammarException: 
-### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(1-1)*1,1' at line 1
-### The error may exist in com/example/community/mapper/QuestionMapper.java (best guess)
-### The error may involve com.example.community.mapper.QuestionMapper.list-Inline
-### The error occurred while setting parameters
-### SQL: select * from question limit (?-1)*?,?
-### Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(1-1)*1,1' at line 1
-; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(1-1)*1,1' at line 1]
-2020-03-18 00:40:56.047  INFO 10584 --- [Thread-6] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-2020-03-18 00:40:56.050  INFO 10584 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2020-03-18 00:40:56.066  INFO 10584 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2020-03-18 00:40:56.522  INFO 10584 --- [restartedMain] c.e.community.CommunityApplication       : Starting CommunityApplication on DESKTOP-O8I92TC with PID 10584 (E:\project\ideaProject\community\target\classes started by 今天你学习了吗 in E:\project\ideaProject\community)
-2020-03-18 00:40:56.523  INFO 10584 --- [restartedMain] c.e.community.CommunityApplication       : No active profile set, falling back to default profiles: default
-2020-03-18 00:40:57.080  INFO 10584 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2020-03-18 00:40:57.081  INFO 10584 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-03-18 00:40:57.082  INFO 10584 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
-2020-03-18 00:40:57.170  INFO 10584 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-03-18 00:40:57.170  INFO 10584 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 644 ms
-2020-03-18 00:40:57.208  INFO 10584 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-2020-03-18 00:40:57.212  INFO 10584 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
-2020-03-18 00:40:57.213  INFO 10584 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://127.0.0.1/community?characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Taipei'
-2020-03-18 00:40:57.398  WARN 10584 --- [restartedMain] c.b.m.core.injector.AbstractMethod       : [com.example.community.mapper.QuestionMapper.selectList] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.SelectList]
-2020-03-18 00:40:57.845  INFO 10584 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-03-18 00:40:57.882  INFO 10584 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
-2020-03-18 00:40:58.469  INFO 10584 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2020-03-18 00:40:58.523  INFO 10584 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2020-03-18 00:40:58.524  INFO 10584 --- [restartedMain] c.e.community.CommunityApplication       : Started CommunityApplication in 2.042 seconds (JVM running for 93.857)
-2020-03-18 00:40:58.562  INFO 10584 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-2020-03-18 00:41:27.660  INFO 4500 --- [restartedMain] c.e.community.CommunityApplication       : Starting CommunityApplication on DESKTOP-O8I92TC with PID 4500 (E:\project\ideaProject\community\target\classes started by 今天你学习了吗 in E:\project\ideaProject\community)
-2020-03-18 00:41:27.676  INFO 4500 --- [restartedMain] c.e.community.CommunityApplication       : No active profile set, falling back to default profiles: default
-2020-03-18 00:41:27.872  INFO 4500 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2020-03-18 00:41:27.873  INFO 4500 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2020-03-18 00:41:30.104  INFO 4500 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2020-03-18 00:41:30.116  INFO 4500 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-03-18 00:41:30.116  INFO 4500 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
-2020-03-18 00:41:30.362  INFO 4500 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-03-18 00:41:30.362  INFO 4500 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2489 ms
-2020-03-18 00:41:30.452  INFO 4500 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-03-18 00:41:30.724  INFO 4500 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-03-18 00:41:30.730  INFO 4500 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://127.0.0.1/community?characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Taipei'
-2020-03-18 00:41:31.442  WARN 4500 --- [restartedMain] c.b.m.core.injector.AbstractMethod       : [com.example.community.mapper.QuestionMapper.selectList] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.SelectList]
-2020-03-18 00:41:32.348  INFO 4500 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-03-18 00:41:32.492  INFO 4500 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
-2020-03-18 00:41:33.522  INFO 4500 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2020-03-18 00:41:33.632  INFO 4500 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2020-03-18 00:41:33.637  INFO 4500 --- [restartedMain] c.e.community.CommunityApplication       : Started CommunityApplication in 6.558 seconds (JVM running for 8.26)
-2020-03-18 00:41:45.118  INFO 4500 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-03-18 00:41:45.118  INFO 4500 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2020-03-18 00:41:45.131  INFO 4500 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 13 ms
-2020-03-18 00:41:45.321  WARN 4500 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.jdbc.BadSqlGrammarException: 
-### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(1-1)* 1,1' at line 1
-### The error may exist in com/example/community/mapper/QuestionMapper.java (best guess)
-### The error may involve com.example.community.mapper.QuestionMapper.list-Inline
-### The error occurred while setting parameters
-### SQL: select * from question limit (?-1)* ?,?
-### Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(1-1)* 1,1' at line 1
-; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(1-1)* 1,1' at line 1]
-2020-03-18 00:44:08.684  INFO 8684 --- [restartedMain] c.e.community.CommunityApplication       : Starting CommunityApplication on DESKTOP-O8I92TC with PID 8684 (E:\project\ideaProject\community\target\classes started by 今天你学习了吗 in E:\project\ideaProject\community)
-2020-03-18 00:44:08.688  INFO 8684 --- [restartedMain] c.e.community.CommunityApplication       : No active profile set, falling back to default profiles: default
-2020-03-18 00:44:08.773  INFO 8684 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2020-03-18 00:44:08.774  INFO 8684 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2020-03-18 00:44:10.875  INFO 8684 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2020-03-18 00:44:10.891  INFO 8684 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-03-18 00:44:10.892  INFO 8684 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
-2020-03-18 00:44:11.092  INFO 8684 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-03-18 00:44:11.093  INFO 8684 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2318 ms
-2020-03-18 00:44:11.163  INFO 8684 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-03-18 00:44:11.311  INFO 8684 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-03-18 00:44:11.315  INFO 8684 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://127.0.0.1/community?characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Taipei'
-2020-03-18 00:44:11.733  WARN 8684 --- [restartedMain] c.b.m.core.injector.AbstractMethod       : [com.example.community.mapper.QuestionMapper.selectList] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.SelectList]
-2020-03-18 00:44:12.412  INFO 8684 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-03-18 00:44:12.517  INFO 8684 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
-2020-03-18 00:44:13.239  INFO 8684 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2020-03-18 00:44:13.300  INFO 8684 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2020-03-18 00:44:13.303  INFO 8684 --- [restartedMain] c.e.community.CommunityApplication       : Started CommunityApplication in 5.186 seconds (JVM running for 6.885)
-2020-03-18 00:44:18.118  INFO 8684 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-03-18 00:44:18.118  INFO 8684 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2020-03-18 00:44:18.129  INFO 8684 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
-2020-03-18 00:44:18.516  INFO 8684 --- [http-nio-8080-exec-1] com.example.community.dto.PageInfo       : count/pageSize,14
-2020-03-18 00:45:02.604  INFO 8684 --- [http-nio-8080-exec-1] com.example.community.dto.PageInfo       : count/pageSize,14
-2020-03-18 00:45:04.530  INFO 8684 --- [http-nio-8080-exec-8] com.example.community.dto.PageInfo       : count/pageSize,14
-2020-03-18 00:45:06.220  INFO 8684 --- [http-nio-8080-exec-7] com.example.community.dto.PageInfo       : count/pageSize,14
-2020-03-18 21:46:10.005  INFO 1304 --- [restartedMain] c.e.community.CommunityApplication       : Starting CommunityApplication on DESKTOP-O8I92TC with PID 1304 (E:\project\ideaProject\community\target\classes started by 今天你学习了吗 in E:\project\ideaProject\community)
-2020-03-18 21:46:10.048  INFO 1304 --- [restartedMain] c.e.community.CommunityApplication       : No active profile set, falling back to default profiles: default
-2020-03-18 21:46:10.388  INFO 1304 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2020-03-18 21:46:10.396  INFO 1304 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2020-03-18 21:46:13.996  INFO 1304 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2020-03-18 21:46:14.009  INFO 1304 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-03-18 21:46:14.010  INFO 1304 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
-2020-03-18 21:46:14.182  INFO 1304 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-03-18 21:46:14.182  INFO 1304 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3784 ms
-2020-03-18 21:46:14.280  INFO 1304 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-03-18 21:46:14.509  INFO 1304 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-03-18 21:46:14.514  INFO 1304 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://127.0.0.1/community?characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Taipei'
-2020-03-18 21:46:15.599  WARN 1304 --- [restartedMain] c.b.m.core.injector.AbstractMethod       : [com.example.community.mapper.QuestionMapper.selectList] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.SelectList]
-2020-03-18 21:46:18.426  INFO 1304 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-03-18 21:46:20.449  INFO 1304 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
-2020-03-18 21:46:27.568  INFO 1304 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2020-03-18 21:46:27.661  INFO 1304 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2020-03-18 21:46:27.666  INFO 1304 --- [restartedMain] c.e.community.CommunityApplication       : Started CommunityApplication in 19.102 seconds (JVM running for 22.259)
-2020-03-18 21:46:36.365  INFO 1304 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-03-18 21:46:36.366  INFO 1304 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2020-03-18 21:46:36.389  INFO 1304 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 22 ms
-2020-03-18 21:46:36.773  INFO 1304 --- [http-nio-8080-exec-1] com.example.community.dto.PageInfo       : count/pageSize,2
+2020-04-07 11:07:04.670  INFO 38536 --- [restartedMain] c.e.community.CommunityApplication       : Starting CommunityApplication on DESKTOP-O8I92TC with PID 38536 (E:\project\ideaProject\community\target\classes started by 今天你学习了吗 in E:\project\ideaProject\community)
+2020-04-07 11:07:04.671  INFO 38536 --- [restartedMain] c.e.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-04-07 11:07:05.628  INFO 38536 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-07 11:07:05.629  INFO 38536 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-07 11:07:05.631  INFO 38536 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-04-07 11:07:05.669  INFO 38536 --- [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2020-04-07 11:07:05.669  INFO 38536 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 987 ms
+2020-04-07 11:07:05.701  INFO 38536 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2020-04-07 11:07:05.705  INFO 38536 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2020-04-07 11:07:05.706  INFO 38536 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://127.0.0.1/community?characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Taipei'
+2020-04-07 11:07:06.021  WARN 38536 --- [restartedMain] c.b.m.core.injector.AbstractMethod       : [com.example.community.mapper.QuestionMapper.selectList] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.SelectList]
+2020-04-07 11:07:06.903  INFO 38536 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-07 11:07:06.945  INFO 38536 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-04-07 11:07:07.554  INFO 38536 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-04-07 11:07:07.618  INFO 38536 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-07 11:07:07.619  INFO 38536 --- [restartedMain] c.e.community.CommunityApplication       : Started CommunityApplication in 3.022 seconds (JVM running for 66134.103)
+2020-04-07 11:07:07.621  INFO 38536 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged

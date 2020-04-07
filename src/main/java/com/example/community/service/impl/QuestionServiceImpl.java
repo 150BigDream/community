@@ -45,6 +45,7 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
      * @param size
      * @return
      */
+    //TODO 搜索功能
     public PaginationDTO selectAll(Integer page, Integer size) {
         Integer totalPage;
         PaginationDTO paginationDTO = new PaginationDTO();
@@ -176,6 +177,7 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
         question.setTag(regexpTag);
 
         List<Question> questions = questionMapper.selectRelated(question);
+
         List<QuestionDTO> questionDTOS = questions.stream().map(q -> {
             QuestionDTO questionDTO = new QuestionDTO();
             BeanUtils.copyProperties(q, questionDTO);

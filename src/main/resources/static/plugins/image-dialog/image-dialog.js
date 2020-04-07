@@ -160,11 +160,9 @@
                         uploadIframe.onload = function() {
 
                              loading(false);
-debugger;
                             var body = (uploadIframe.contentWindow ? uploadIframe.contentWindow : uploadIframe.contentDocument).document.body;
                             var jsonContainer = body.getElementsByTagName("pre")[0];
-                            var json = (jsonContainer.innerText) ? jsonContainer.innerText : ( (jsonContainer.textContent) ? jsonContainer.textContent : null);
-                            // var json = (body.innerText) ? body.innerText : ( (body.textContent) ? body.textContent : null);
+                            var json = (jsonContainer.innerText) ? jsonContainer.innerText : ((jsonContainer.textContent) ? jsonContainer.textContent : null);
 
                             json = (typeof JSON.parse !== "undefined") ? JSON.parse(json) : eval("(" + json + ")");
 
